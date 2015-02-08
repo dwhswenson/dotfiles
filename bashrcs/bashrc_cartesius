@@ -1,0 +1,6 @@
+#bashrc for cartesius.surfsara.nl
+export UNISONLOCALHOSTNAME=${HOSTNAME%%.*}
+
+export LS_COLOR_OPT="--color"
+
+alias vim="vim -u ~/.dwhs/.vim/.vimrc"

@@ -1,0 +1,28 @@
+# bashrc file for anything that use PBS queueing system
+
+function qsubs
+{
+    for job in $@; do qsub $job; done
+}
+
+function qkillall
+{
+    for num in `qsu | grep "`whoami`" | awk '{ print $1 }'`
+    do
+        qdel $num
+    done
+}
+
+sched_match=".rafiki.tau.ac"
+
+# cleaning qstat for 80 column screens
+cleansched="s/^\(.*\)${sched_match}\ /\1 /"
+cleanJobID='s/ID\ \ \ \ \ \ \ \ \ \ \ \ \ \ /ID/'
+cleanEmpty='s/^\ \ \ \ \ \ \ \ \ \ \ \ \ \ //'
+cleanDash='s/^\-\-\-\-\-\-\-\-\-\-\-\-\-\-//'
+alias qclean="sed \"$cleansched\" | sed $cleanJobID | sed $cleanDash | sed $cleanEmpty"
+
+alias qsu="qstat -u `whoami` | qclean "
+alias qsa="qstat -a | qclean"
+alias qsan="qstat -an1 | qclean"
+

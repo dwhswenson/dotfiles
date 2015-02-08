@@ -1,0 +1,33 @@
+# ${HOME}/.bashrcs/bashrc_wigner
+# bashrc file for Wigner, my work iMac
+
+export UNISONLOCALHOSTNAME="Wigner"
+source ~/.bashrcs/bashrc_macosx
+source ~/.bashrcs/bashrc_dynamiq
+export LOCAL_APPLICATIONS="/Applications"
+
+export SCHRODINGER="/opt/schrodinger2012"
+
+alias unison="unison -ui text"
+
+
+export DYNAMIQ_BASEDIR="/Users/dwhs/Documents/research/md"
+
+VMDCMD="/Applications/VMD1.8.7.app/Contents/MacOS/startup.command"
+
+#alias gnuplot="/Applications/Gnuplot.app/Contents/Resources/bin/gnuplot"
+export GNUPLOT_PS_DIR="/opt/local/share/gnuplot/4.4/PostScript"
+
+export GSL_CFLAGS=`gsl-config --cflags`
+export GSL_LDFLAGS=`gsl-config --libs`
+
+alias carbonproj='echo `pwd | sed "s;/Volumes/Carbon/\([^/]*\)/.*;/Volumes/Carbon/\1/;"`'
+
+alias ssh-switch='ssh -tq carbon \"cd `pwd | sed s:/Volumes/Carbon/::\` && bash \" '
+
+#something really weird is going on with regular lexing: segfaults on launch
+#export LEX=flex
+#export YACC="bison -y"
+
+# really?
+export PATH=${PATH}:~/bin

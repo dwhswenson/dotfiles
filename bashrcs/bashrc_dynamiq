@@ -1,0 +1,16 @@
+# bashrc_dynamiq
+#   bashrc stuff for any computer that runs dynamiq (technically, dynamiq2)
+
+# NOTE: the environment variable ${DYNQ} should be set prior to loading
+# this. 
+# ${DYN2DIR} : base directory for dynamiq
+# ${DYNQ}    : ${DYN2DIR}/trunk
+
+# Two tricks for comparing branches in dynamiq2 
+# 1. identify which files differ
+alias trunkcompare='diff -q -r . ${DYNQ} | grep -v "\.o" | grep -v "\.dSYM" | grep "Files.*differ"'
+# 2. opendiff to merge them: by default, we merge FROM trunk TO this file
+function trunkdiff { 
+    opendiff $1 ${DYNQ}/$1 -merge $1
+}
+

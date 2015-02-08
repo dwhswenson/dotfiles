@@ -1,0 +1,114 @@
+# ~/.bashrcs/bashrc_gridengine
+# bashrc file for systems using Grid Engine as the queueing system
+
+# Various functions/aliases I use for managing queues on systems with
+# GridEngine.
+#       David W.H. Swenson  15 June 2013. Released into the (UvA) wild.
+# Note: some of these (in particular qkillall) have not been fully tested.
+# As with all software, this is use-at-your-own-risk, no-guarantee-that-it-
+# is-fit-for-any-purpose, etc. They seem to work for me right now.
+
+# This file defines the following functions/aliases (with brief description):
+# 1. qsubs      : submit multiple jobs at once
+# 2. qsu        : qstat info for the current user
+# 3. qunhold    : release hold on a number of queued tasks
+# 4. qholdall   : put a hold on all queued jobs
+# 5. qsc        : qstat info for specific clusters of interest (defined in
+#                 $MYQUEUES)
+# 6. qscclean   : better presentation of `qstat -g c` on 80 columns
+# 7. qkillall   : qdel on all jobs matching a given job status
+# 8. qhog       : see how many jobs (matching a given job status) are in the
+#                 queue from each user
+# Details below with each individual function/alias.
+
+
+# polite qsubs (multiple submissions): it submits jobs to the queue with a 
+# hold. Override the default hold with the -rude option.
+function qsubs
+{
+    hold="-h"
+    if [ "$1" = "-rude" ]
+    then
+        hold=" "
+        shift
+    fi
+    for job in $@; do qsub ${hold} $job; done
+}
+
+# qsu: qstat for this user (i.e., me) -- qstat uname field width is 12.
+# Reports list of jobs for the logged-in user.
+alias qsu="qstat | grep `whoami | cut -c 1-12`"
+
+# qunhold: release hold on the first $1 of your jobs in the queue. Requires
+# one argument (the number of jobs to release hold on).
+function qunhold
+{
+    echo "qalter -h U" `qsu | awk '{ if ($5=="hqw") { print $1 } }'  | 
+    head -n $1` | sh
+}
+
+# qholdall: put a hold on all of your queued jobs
+function qholdall
+{
+    echo "qalter -h u" `qsu | awk '{ if ($5=="qw") { print $1 } }'` | sh
+}
+
+# qsc: show cluster status for only the queues I care about (change the
+# MYQUEUES env variable to such that the regex gives what you want
+export MYQUEUES="bio\|gromacs\|serial"
+alias qsc='(qstat -g c | head -n 2 && qstat -g c | grep "$MYQUEUES") | qscclean'
+
+# qclean: better presentation of `qstat -g c` data in an 80 column terminal
+alias qscclean="awk 'BEGIN { FS=\" [a ] *\"} { if (NF>1) { printf \"%-34s %10s %10s %10s %10s\n\", \$1, \$2, \$3, \$6, \$5 } else { for (i=0; i<78; i++) {printf \"-\" } print \" \"} }'"
+
+# qkillall: runs qdel on all the jobs matching the status given as the first
+# argument ('h' for held, 'q' for queued, 'r' for running). Will list the
+# jobs it's about to kill, and requires confirmation. However, it cannot do
+# confirmation on a job-by-job basis (sorry).
+function qkillall
+{
+    status=$1
+    njobs=`qsu | awk -v status=$status '{ if ($5 ~ status) { print $0 } }' | wc -l`
+    echo "About to kill " $njobs " jobs:"
+    qsu | awk -v status=$status '{ if ($5 ~ status) { print $0 } }' 
+    read -p "Press \"Y\" to confirm: " yesno
+    case $yesno in
+    [Yy]* ) 
+        jobnums=`qsu | awk -v status=$status '{ if ($5 ~ status) { print $1 } }'`
+        for job in $jobnums; do
+            qdel $job
+        done
+        ;;
+    * )
+        echo "Cancelling. No jobs were harmed during the production of this text."
+        ;;
+    esac
+}
+
+# qhog : This function will figure out how many processors each user is
+# using; by passing arguments you can get the job status. Defaults to
+# running (same as `qhog r`); otherwise consider `qhog q` for queued jobs,
+# `qhog h` for held jobs -- the arguments work as a regular repression.
+function qhog
+{
+    status=$1
+    if [ "$#" = "0" ]
+    then
+        status="r"
+        # default behavior is to check running jobs
+    fi
+    qstat | tail -n +2 | # clear out the column header lines
+    awk -v status=$status '{ if ($5 ~ status) { print $4, $8 } }' | sort | 
+    awk 'BEGIN { last_sorted="" }
+    { 
+        if (last_sorted != $1) {
+            if (last_sorted != "") {
+                printf "%5d %s\n", tot, last_sorted
+            }
+            tot = 0
+        }
+        last_sorted = $1
+        tot += $2
+    }' | sort -rn
+}
+

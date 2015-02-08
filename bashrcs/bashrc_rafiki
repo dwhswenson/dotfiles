@@ -1,0 +1,51 @@
+# Bash preferences specfic to running on the Rabani group machines
+# (We call it rafiki, but it is designed to also do the right thing on
+# desktops -- at least, my desktop, atta -- and on any cluster machines)
+export UNISONLOCALHOSTNAME=${HOSTNAME%%.*}
+source $HOME/.bashrcs/bashrc_dwhs
+
+export SVN_SSH="ssh -q -i $HOME/.ssh/dwhs_keys/rafiki_svn"
+#export SVN_SSH="ssh -v -i $HOME/.ssh/dwhs_keys/rafiki_svn" # DEBUG
+export DYNAMIQ_BASEDIR="/home/dwhs/md"
+
+function qsub_rafiki
+{
+    local THISDIR=`pwd`
+    ssh rafiki "cd $THISDIR && qsub $@"
+}
+
+function qstat_rafiki
+{
+    ssh rafiki "qstat $@"
+}
+
+if [ $UNISONLOCALHOSTNAME = "atta" ]
+then
+    alias qsub="qsub_rafiki"
+    alias qstat="qstat_rafiki"
+    alias status="ssh rafiki 'status'"
+fi
+
+# This bit is ugly as sin.
+MPI_DIR=/usr/lib64/openmpi/1.4-gcc
+if [ $UNISONLOCALHOSTNAME = "atta" ]
+then 
+MPI_DIR=/usr/lib/openmpi
+fi
+
+export PATH="${PATH}:${MPI_DIR}/bin"
+export MPI_CFLAGS="-I ${MPI_DIR}/include/"
+export MPI_LDFLAGS="-L${MPI_DIR}/lib -lmpi"
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${MPI_DIR}/lib"
+export MPICC=mpicc
+
+
+export YACC="bison -y"
+export LEX=lex
+
+export PATH=${PATH}:/usr/local.cc/bin/
+
+export GSL_CFLAGS=`gsl-config --cflags`
+export GSL_LDFLAGS=`gsl-config --libs`
+
+source ~/.bashrcs/bashrc_pbs

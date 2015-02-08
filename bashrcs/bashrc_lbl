@@ -1,0 +1,43 @@
+#bashrc for lbl_clusters 
+export UNISONLOCALHOSTNAME=lbl_clusters
+export SVN_SSH="ssh -i /global/home/users/dswenson/.ssh/dwhs_cyclades64"
+
+module load gsl/1.9-pgi
+module load gnuplot/4.2.5-gcc-gd
+export LEX=flex
+export CC=icc
+#export GSL=`gsl-config --cflags`
+#export GSL="${GSL} -L/global/software/centos-5.x86_64/modules/gsl/1.9-intel/gsl-1.9/lib"
+
+#function swap-gnuplot # lovely, but no longer needed
+#{
+#    gd=`which gnuplot | grep -c "\-gd\/"`
+#    if [ $gd -eq "1" ]; then
+#        gd=""
+#    else
+#        gd="-gd"
+#    fi
+#    module swap gnuplot/4.2.5-gcc${gd}
+#    which gnuplot
+#}
+
+export GSL_CFLAGS=`gsl-config --cflags`
+export GSL_LDFLAGS=`gsl-config --libs`
+export MPICC=mpicc
+
+export DYNAMIQ_BASEDIR=${HOME}/md
+
+source ~/.bashrcs/bashrc_pbs
+
+#export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/home/cyclades64/dswenson/lib"
+
+module load numpy
+
+alias qscy="qstat -a cyclades_batch | qclean"
+alias qssh="qstat -a lr_short | qclean"
+alias qsre="qstat -a lr_regular | qclean"
+alias qsdb="qstat -a lr_debug | qclean"
+alias qslong="qstat -a lr_long | qclean"
+
+# something to run when we start the shell:
+qsu

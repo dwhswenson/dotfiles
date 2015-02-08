@@ -1,0 +1,56 @@
+#bashrc for carbon.science.uva.nl
+export UNISONLOCALHOSTNAME=${HOSTNAME%%.*}
+
+# svn
+export SVN_SSH="ssh -i /home/dwhs/.ssh/dwhs_keys/carbon_svn"
+
+# user-installed
+export PATH="~/bin:${PATH}"
+export LD_LIBRARY_PATH="${HOME}/lib:{$LD_LIBRARY_PATH}"
+export PYTHONPATH="${HOME}/lib/python2.6/site-packages"
+
+# compiling dynamiq (1 or 2)
+export YACC="bison -y"
+export GSL_CFLAGS=`gsl-config --cflags`
+export GSL_LDFLAGS=`gsl-config --libs`
+
+export MPICC=mpicc
+
+source ~/.bashrcs/bashrc_gridengine
+export LS_COLOR_OPT="--color"
+
+# dynamiq 1
+#export DYNAMIQ_BASEDIR=${HOME}/md
+
+# dynamiq 2
+export DYNQ="${HOME}/dynamiq/trunk"
+
+alias proj='echo `pwd | sed "s;${HOME}\/\([^/]*\).*;${HOME}/\1/;"`'
+
+# scratchf: takes the $NAME.o$JOBID output file from a job, extracts the
+# node the calculation is on, ssh's in, and runs the command given after the
+# ofile name.
+function scratchf {
+    ofile=$1
+    echo $ofile
+    shift
+    jobid=`grep "^JOB_ID\=" $ofile | sed 's/JOB_ID\=//'`
+    jobname=`grep "^JOB_NAME\=" $ofile | sed 's/JOB_NAME\=//'`
+    node=`head -n 1 $ofile | awk '{print $3}'` # first line, third word
+    scratch_dir="/state/partition1/${USER}/${jobname}-${jobid}"
+    ssh -qt $node "cd $scratch_dir && $@"
+}
+
+function scratch {
+    namehint=*.o$1 # change this to *.o*$1 if you want to use just end nums
+    # we assume that you only have one file ending in the appropriate thing
+    ofile=`find ${HOME}/ -name "$namehint" | sed 1Q`
+    scratchf $ofile
+}
+# TODO: this should really go somewhere else so it only runs on login
+# something to run when we start the shell: 
+if [ $UNISONLOCALHOSTNAME = "carbon" ]
+then
+    qsu
+fi
+

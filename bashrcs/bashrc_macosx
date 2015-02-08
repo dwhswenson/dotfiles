@@ -1,0 +1,56 @@
+# ${HOME}/.bashrcs/bashrc_macosx
+# bashrc file for all (current) Mac OS X machines
+
+source ~/.bashrcs/bashrc_dropbox # Macs should have Dropbox installed
+
+alias callme='say "Hey sexy, come over here"'
+
+export SVN_SSH="ssh -q -i $HOME/.ssh/hyperblazer_keys/dwhs_svn"
+
+alias svndiff="svn diff --diff-cmd fmdiff"
+alias f77="gfortran"
+
+export FC=gfortran
+
+# note: the single quotes are very necessary here. With double quotes, `pwd`
+# gets evaluated at login!
+alias itermrun='osascript ~/.scripts/iterm2_newwin_run.scpt "`pwd`"'
+alias xtermrun="open -a XQuartz && xterm -e"
+
+export GNUPLOT_PS_DIR=/usr/local/share/gnuplot/4.4/PostScript
+export GDFONTPATH="~/Library/Fonts:/System/Library/Fonts:$GDFONTPATH"
+export DISPLAY=":0" # req'd for gnuplot in Mountain Lion
+export MPICC=mpicc
+
+alias aprun="mpirun"
+alias memcheck="valgrind --tool=memcheck --leak-check=full --dsymutil=yes --track-origins=yes"
+
+# VMDCMD needs to be set bashrc_HOSTNAME
+alias vmd="itermrun \'\${VMDCMD}\'"
+alias vvmd='command "${VMDCMD}"'
+alias xvmd='xtermrun "${VMDCMD}"'
+
+# Mac specific
+alias apachestart="sudo /Library/Apache2/bin/apachectl graceful"
+alias web="open -a Firefox"
+alias comp="opendiff"
+alias open.="open ."
+alias xcode="open -a XCode"
+alias maillog="cat /var/log/mail.log"
+alias x11="open -g -a XQuartz" # post Mountain Lion, need XQuartz, not X11
+alias xssh="open -g -a XQuartz && ssh -X" 
+# fucking MacPorts
+export PATH=$PATH:/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin
+#export LD_LIBRARY_PATH=/opt/local/Library/Frameworks/Python.framework/Versions/Current/lib:/opt/local/lib:$LD_LIBRARY_PATH
+# fucking Gromacs in MacPorts
+export PATH=$PATH:/opt/local/lib/gromacs/bin
+export MANPATH=$MANPATH:/opt/local/man
+
+alias services-rebuild="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
+
+alias maxima="${LOCAL_APPLICATIONS}/Maxima.app/Contents/Resources/bin/maxima"
+alias ffmpeg="/Applications/ffmpegX.app/Contents/Resources/ffmpeg"
+
+VIRTUALENVWRAPPER_PYTHON=/opt/local/bin/python
+export WORKON_HOME=$HOME/Dropbox/virtualenv
+source /opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/virtualenvwrapper.sh
