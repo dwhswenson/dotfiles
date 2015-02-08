@@ -1,0 +1,9 @@
+.
+..
+.Trash
+.CFUserTextEncoding
+.DS_Store
+.Spotlight-V100
+.TemporaryItems
+.Xauthority
+.bash_history
