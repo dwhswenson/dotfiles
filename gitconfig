@@ -1,0 +1,10 @@
+[user]
+	email = dwhs@hyperblazer.net
+	name = David W.H. Swenson
+[core]
+	excludesfile = /Users/dwhs/.gitignore_global
+[push]
+	default = simple
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
