@@ -36,6 +36,7 @@ port select --set pep8 pep827
 port select --set pyflakes py27-pyflakes
 port select --set flake8 flake827
 port select --set pylint pylint27
+port install py-networkx
 
 ## pip installs: 
 # pip install numexpr tables pandas # handled by ports now?
