@@ -13,11 +13,14 @@
 .cache
 .com.apple.timemachine.supported
 .crack-attack
+.dvdcss
+.etracer
 .gdb_history
 .gimp-2.2
 .gimp-2.4
 .gdb_history
 .gnuplot_history
+.jpi_cache
 .lldb-history
 .mysql_history
 .sqlite_history
