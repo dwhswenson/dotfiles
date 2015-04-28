@@ -44,6 +44,7 @@ pip install fastcluster msmbuilder
 pip install mdtraj
 pip install pymbar --pre
 pip install svgwrite
+pip install line_profiler
 
 # compiling dynamiq
 port install bison
