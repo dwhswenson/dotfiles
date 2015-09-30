@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# A primitive pdf2png which requires that the correct background be in place
+# already.
+#
+# Requires : ghostscript (gs) and ImageMagick (convert)
+#
+# Usage : 
+#  pdf2png file1.pdf [file2.pdf ... ]
+function file_base_name() {
+    echo $1 | sed 's/\(.*\)\..*/\1/'
+}
+
+for file in "$@"
+do
+   basename=`file_base_name $file` # note: I define this in my bashrc
+   gs -q -dSAFER -dBATCH -dNOPAUSE -r150 -sDEVICE=png16m -dTextAlphaBits=4 \
+      -sOutputFile=${basename}.png ${basename}.pdf
+   convert -trim ${basename}.png ${basename}.png
+done
+

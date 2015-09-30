@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#TMPIPRE="[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}"
+#myipaddress=`ifconfig | grep "$TMPIPRE" | grep -v "127.0.0.1" | 
+#sed "s/.*inet \($TMPIPRE\).*/\1/g"`
+
+myipaddress=`curl -s 'http://checkip.dyndns.org' | sed 's/.*Current IP Address: \([0-9\.\.]*\).*/\1/g'`
+myhostname=`host $myipaddress | sed 's/.*pointer \(.*\)\./\1/'`
+echo "$myipaddress	$myhostname"
+
+while getopts "c" opt; do
+  case $opt in
+    c)
+      echo -n $myipaddress | pbcopy
+      echo "Numeric IP copied to pasteboard"
+      ;;
+    esac
+done
+

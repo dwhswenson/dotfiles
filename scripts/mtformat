@@ -1,0 +1,29 @@
+#!/bin/bash
+    
+# strip off the metadata
+metaStart=`grep -n '<!-- BLOG METADATA' $1 | sed "s/^\([0-9]*\)\:.*/\1/"`
+metaEnd=`grep -n '== BLOG METADATA -->' $1 | sed "s/^\([0-9]*\)\:.*/\1/"`
+metaLines=$(( $metaEnd - $metaStart - 1 ))
+
+grep -A $metaLines '<!-- BLOG METADATA' $1 | 
+tail -n $((metaLines)) > ${1}.header
+
+cat ${1} | mkd_pre_dwhs > ${1}.preparsed
+
+
+# run the body through
+cat ${1}.header && echo "-----" && echo "BODY:" &&
+pandoc -S ${1}.preparsed | tidy -q -config blog.tidy
+
+# Hypothetically, we'd like to pipe the above into the following.
+# Unfortunately, the "excerpt" header can't serve as an independent
+# "abstract", near as I can tell.
+
+# sed 's/<\!\-\- BLOG ABSTRACT/\
+# -----\
+# EXCERPT:/' | grep -v '== BLOG ABSTRACT -->'
+
+rm -f ${1}.header ${1}.preparsed
+
+
+

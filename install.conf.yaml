@@ -1,10 +1,12 @@
 - clean: ['~']
 
 - link:
-    ~/.bashrcs: bashrcs
+    ~/.bashrcs: bashrcs/
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.gnuplot: gnuplot
     ~/.gnuplotd: gnuplotd/
     ~/.vim: vim/
     ~/.vimrc: vimrc
+    ~/.scripts: scripts/
+

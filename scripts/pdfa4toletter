@@ -1,0 +1,3 @@
+#!/bin/sh
+
+gs -dBATCH -dNOPAUSE -sDEVICE=pdfwrite -sOutputFile=$2 -sPAPERSIZE=letter $1

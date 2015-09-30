@@ -1,0 +1,20 @@
+#!/bin/bash
+
+filename=$@
+
+echo "
+\\documentclass{article}
+\\usepackage{amssymb}
+
+\\pagestyle{empty}
+
+\\begin{document}" > ${filename}-tmp.tex
+
+cat $filename >> ${filename}-tmp.tex
+
+
+echo "\\end{document}" >> ${filename}-tmp.tex
+textogif -png ${filename}-tmp.tex
+base=`echo $filename | sed 's/\(.*\)\.tex/\1/'`
+mv ${filename}-tmp.png ${base}.png
+rm -f ${filename}-tmp.*

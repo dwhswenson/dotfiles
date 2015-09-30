@@ -1,0 +1,11 @@
+#!/bin/bash
+
+username=`whoami`
+watchlist="/home/${username}/.qnotify_watchlist"
+contact="dwhs@hyperblazer.net"
+
+# check how many arguments we have
+
+# if 0 arguments; check watchlist: if needed, send notification and remove 
+
+# if 1 or more arguments; add to the watchlist

@@ -1,0 +1,34 @@
+#!/bin/bash
+# acal : A little 2-month calendar.
+# requires the cal utility
+
+cal
+
+month=`date "+%m" | sed 's/^0//'`
+year=`date "+%Y"`
+month=$(( $month ))
+
+# may loop here for more than 2 months
+count=$1
+if [ ! "$count" ]
+then
+    count=2
+fi
+
+while [ $count -gt 1 ]
+do
+    let nextmonth=$(( ($month + 1) % 13 ))
+    if [ $nextmonth -lt $month ]
+    then
+        step=1
+    else
+        step=0
+    fi
+    let year=$(( $year + $step ))
+    let month=$(( $nextmonth + $step ))
+
+    cal $month $year
+    
+    let count-=1
+done
+

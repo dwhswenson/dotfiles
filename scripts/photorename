@@ -1,0 +1,8 @@
+#/bin/bash
+
+for file in * 
+do
+  newname=`echo $file | sed 's/DSCN0\(.*\)\(\..*\)/\1_\2/'`
+  mv $file $newname
+  echo "$file -> $newname"
+done

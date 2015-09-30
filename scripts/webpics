@@ -1,0 +1,62 @@
+#!/bin/bash
+
+mkdir thumbs
+
+function html_top
+{
+  echo "<html>"
+  echo "<head>"
+  echo "  <title></title>"
+  echo "  <!--<style />-->"
+  echo "</head>"
+  echo ""
+  echo "<body>"
+}
+
+function html_bottom
+{
+  echo ""
+  echo "</body>"
+  echo "</html>"
+}
+
+html_top > index.html
+
+echo "  <table>" >> index.html
+echo "  <tr>" >> index.html
+
+i=""
+for largefile in large/*
+do
+  if [ $i -eq "1111" ]
+  then
+    echo "  </tr><tr>" >> index.html
+    i=""
+  fi
+  i="${i}1"
+  basename=`echo $largefile | sed 's/large\/\(.*\).[jJ][pP][gG]/\1/'`
+  smallfile=`ls small/ | grep "$basename"`
+  smallfile="small/$smallfile"
+  thumbfile="thumbs/${basename}_thumb.jpg"
+  filename="${basename}.html"
+  convert -resize 25% $smallfile $thumbfile
+  echo "    <td>" >> index.html
+  echo "      <a href=\"$filename\">" >> index.html
+  echo "      <img src=\"$thumbfile\" alt=\"$basename\" />" >> index.html
+  echo "      </a>" >> index.html
+  echo "    </td>" >> index.html
+  
+  # make image file
+  html_top > $filename
+  echo "<img src=\"$smallfile\" alt=\"$filename\" />" >> $filename
+  echo "<p><a href=\"$largefile\">LARGE</a>" >> $filename
+  echo "<a href=\"$smallfile\">SMALL</a></p>" >> $filename
+  echo "<p><!-- caption -->" >> $filename
+  echo "</p>" >> $filename
+  html_bottom >> $filename
+  ###
+done
+
+echo "  </table>" >> index.html
+
+html_bottom >> index.html

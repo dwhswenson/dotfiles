@@ -1,0 +1,11 @@
+[global]
+default=researchblog
+
+[site-researchblog]
+url=http://researchblog.hyperblazer.net/xmlrpc.php
+username=dwhs
+password=hbzaac
+
+[blog-researchblog]
+site=researchblog
+blogid=blog

@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# This is a little script to check whether files given on the command line are
+# duplicates. As argument it takes a list of files; it'll tell you whether
+# there's an MD5 collision on any of them (which isn't technically the same
+# as showing that they're identical, but pretty damn close -- and certainly
+# good enough in the situations where I'll be using this.)
+
+# Note: this could be sped up by first sorting by file size and only hashing
+# files with the same size. Then you could use diff to do a true test on the
+# files that also have has collisions
+
+if [ -e /sbin/md5 ]
+then
+    MD5exe='/sbin/md5'
+    MD5clean="awk '{ print \$4 }'"
+elif [ -e /usr/bin/md5sum ]
+then
+    MD5exe='/usr/bin/md5sum'
+    MD5clean="awk '{ print \$1 }'"
+fi
+
+for file in $@
+do
+    mymd5=`echo "${MD5exe} $file | $MD5clean" | sh`
+    echo "$mymd5 $file"
+done | sort | awk '
+BEGIN {
+    lastmd5=""
+    ndupes=0
+    firstfile=""
+}
+{
+    if ($1 == lastmd5) {
+        if ( ndupes==0 ) { # only print md5 the first time
+            print $1 ":"
+            print "    " firstfile
+        }
+        print "    " $2
+        ndupes += 1
+    } else {
+        lastmd5 = $1
+        firstfile = $2
+        if (ndupes > 0) { # end line
+            print "Total duplicates: ", ndupes+1
+        }
+        ndupes = 0
+    }
+}
+END {
+    if (ndupes > 0) { # end line
+        print "Total duplicates: ", ndupes+1
+    }
+}
+'

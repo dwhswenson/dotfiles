@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# qsteadystate
+#   This little script maintains a steady number of processors in use (or
+#   queued for use) by a given user. It is ideal for those cases when you
+#   want to run a whole lot of long calculations, but also want to leave
+#   some space for others to use the queue as well.
+#   
+#   Just set the desired maximum number of processors to use.
+#   Then have cron run it on an hourly basis.
+
+
+# 
+maxproc=30
+
+# this is where we get the GridEngine stuff (need this if run by cron)
+source /etc/profile.d/sge-binaries.sh
+username=`whoami`   
+
+
+# definitely not the most elegant way to do this, but it works and doesn't
+# require much testing:
+unheld=`qstat | grep "$username" | awk '{print $5, $8}' | grep -v "h" | 
+        awk 'BEGIN {unh=0} { unh+=$2 } END {print unh}'`
+held=`qstat | grep "$username" | 
+        awk 'BEGIN {held=0} $5 ~ /h/ { held+=$8 } END { print held}'`
+
+allowed=$(($maxproc - $unheld))
+
+tofree=$allowed
+if [ $held -lt $allowed ]; then
+    tofree=$held
+fi
+
+# To debug: turn the echo below on; turn to if-block after off
+#echo "unheld: $unheld   allowed: $allowed   held: $held     tofree: $tofree"
+if [ $tofree -gt 0 ]; then
+    echo "qalter -h U" `qstat | grep "${username}" | 
+            awk '{ if ($5=="hqw") { print $1 } }'  | head -n $tofree` | sh
+fi

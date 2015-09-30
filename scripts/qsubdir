@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# qsubdir
+#   Checks a directory for symlinks to jobs that need to run. If any jobs
+#   are in that directory, change to the directory that it is symlinked to
+#   and run the job, then remove the symlink. 
+
+QSUBDIR="${HOME}/.qsubdir"
+
+if [ ! -d "$QSUBDIR" ]
+then
+    mkdir $QSUBDIR
+fi
+
+# NOTE: if you put symlinks other than job scripts in your $QSUBDIR, then
+# you deserve whatever hell this rains upon you. Ditto if you have nested
+# symlinks in there. 
+for file in ${QSUBDIR}/*
+do
+    if [ -L "$file" ]
+    then
+        orig_dir=`pwd -P`
+        cd $QSUBDIR
+        # This stuff can be replaced with readlink -f on systems that have
+        # it. Best practice is to symlink with absolute paths; this tries to
+        # handle some relative path stuff, but don't count on it.
+        linkloc=`readlink $file`
+        cd `dirname $linkloc`
+        linkeddir=`pwd -P`
+        cd $QSUBDIR
+        linkedbase=`basename $linkloc`
+        cd $linkeddir
+        qsub $linkedbase && rm $file
+        cd $orig_dir
+    fi
+done
