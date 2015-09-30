@@ -1,0 +1,57 @@
+menu main on
+foreach {x y} [ menu main loc ] {}
+menu main move [expr $x+510] $y
+
+proc sigmoidal { x alpha x0 } {
+    set val [expr ($x-$x0) / sqrt($alpha*$alpha+($x-$x0)*($x-$x0)) + 1 ]
+    return $val
+}
+
+proc interpolate_AB { col1 col2 frac } {
+    # for linear interpolation
+    set frac_step [ expr $frac*0.5 ]
+    # for sigmoidal interpolation
+    set alpha 0.5
+    set x0 0.5
+    set sx [ sigmoidal [ expr $frac/0.5 ] $alpha $x0 ]
+    set s1 [ sigmoidal 1.0 $alpha $x0 ]
+    set s0 [ sigmoidal 0.0 $alpha $x0 ]
+    set frac_step [ expr ($sx - $s0)/($s1 - $s0) ]
+    set delta [vecsub $col2 $col1]
+    set vect [vecadd $col1 [vecscale $delta $frac_step]]
+    return $vect
+}
+
+proc colorscale_sigmoidal_and_errors {} {
+    display update off
+    set mincolorid [ expr [colorinfo num] -1 ]
+    set maxcolorid [ expr [colorinfo max] -1 ]
+    set colrange [ expr $maxcolorid - $mincolorid ]
+    set colhalf [ expr $colrange / 2]
+    set alpha { 0.0 0.0 1.0 } 
+    set beta { 1.0 0.0 0.0 } 
+    set gamma { 0.0 1.0 0.0 } 
+    for { set i $mincolorid} {$i < $maxcolorid} {incr i} {
+        set colfrac [ expr ($i - $mincolorid) / double($colrange) ]
+        # here's where you actually implement the piecewise function you'll
+        # be using
+        if { $colfrac < 0.5 } {
+            set colorvect [ interpolate_AB $alpha $beta $colfrac ]
+        } elseif { $colfrac > 0.95 } {
+            set colorvect $gamma
+        } else {
+            set colorvect $beta
+        }
+        foreach {r g b} $colorvect {}
+        display update ui
+        #puts "index: $i $r $g $b -- $colfrac"
+        color change rgb $i $r $g $b
+    }
+    display update on
+}
+
+proc white_bg_2d {} {
+    display projection orthographic
+    color Display Background white
+    axes location off
+}
