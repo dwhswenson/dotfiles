@@ -23,7 +23,7 @@ port install py27-scipy
 port install py27-pandas
 port select --set cython cython27
 port select --set sphinx py27-sphinx
-port install py27-ipython +notebook +scientific
+port install py27-jupyter py27-ipython +notebook +scientific
 port select --set ipython ipython27
 port install py27-scikit-learn
 port select --set nosetests nosetests27
@@ -64,7 +64,7 @@ port install gdb
 
 # plotting and making graphics
 port install gnuplot +aquaterm +luaterm +pangocairo +wcwidgets +x11
-port install grace
+port install grace +universal
 port install ImageMagick
 port install ffmpeg
 port install MPlayer

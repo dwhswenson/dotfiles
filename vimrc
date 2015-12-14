@@ -37,15 +37,15 @@ Plugin 'Valloric/YouCompleteMe' " auto-complete
 Plugin 'tmhedberg/SimpylFold' " Python syntax-level folding
 "Plugin 'JarrodCTaylor/vim-python-test-runner' " nose tests
 Plugin 'dwhswenson/vim-python-test-runner' " nose tests (my fork)
+Plugin 'scrooloose/syntastic' " Syntax checking (made vim very slow)
 
 "Plugin 'gerw/vim-latex-suite' " latex (consider forking my own?)
 "Plugin 'vim-scripts/a.vim'
-" ???pyclewn???
 "
 "Plugin 'jgdavey/tslime.vim' " tmux integration
-"Plugin 'scrooloose/syntastic' " Syntax checking (made vim very slow)
 
 " TODO move old plugins to Vundle support
+" ???pyclewn???
 
 call vundle#end()            " required
 " Install with :PluginInstall or `vim +PluginInstall +qall`
@@ -55,9 +55,11 @@ call vundle#end()            " required
 :let mapleader = ","
 
 "let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": [], "passive_filetypes": [] }
 
-" apparently ycm crashes with the MacPorts python, but not with Apple
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+" apparently ycm is very particular about which python to use
+"let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_path_to_python_interpreter = '/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/python2'
 let g:ycm_auto_trigger = 1
 let g:ycm_min_num_chars_for_completion = 3
 let g:ycm_min_num_identifier_candidate_chars = 5
