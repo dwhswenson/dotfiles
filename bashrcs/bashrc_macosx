@@ -9,6 +9,7 @@ export SVN_SSH="ssh -q -i $HOME/.ssh/hyperblazer_keys/dwhs_svn"
 
 alias svndiff="svn diff --diff-cmd fmdiff"
 alias f77="gfortran"
+alias sage="/Applications/Sage-6.9.app/Contents/Resources/sage/sage"
 
 export FC=gfortran
 

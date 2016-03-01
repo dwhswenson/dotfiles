@@ -7,42 +7,42 @@ PROMPT_COMMAND='echo -ne "\033]0;${USER}@${UNISONLOCALHOSTNAME}: ${PWD}\007"'
 # in the window title. This can be extremely useful when you have a lot of
 # tabs open: lets you quickly check what is running in each tab.
 # stolen wholesale from: http://mg.pov.lt/blog/bash-prompt.html
-case "$TERM" in
-xterm*|rxvt*)
-    # Show the currently running command in the terminal title:
-    # http://www.davidpashley.com/articles/xterm-titles-with-bash.html
-    show_command_in_title_bar()
-    {
-        case "$BASH_COMMAND" in
-            *\033]0*)
-                # The command is trying to set the title bar as well;
-                # this is most likely the execution of $PROMPT_COMMAND.
-                # In any case nested escapes confuse the terminal, so don't
-                # output them.
-                ;;
-            *)
-                DEFAULT_TITLE="${USER}@${UNISONLOCALHOSTNAME}: ${PWD}"
-                mycmd=`echo $BASH_COMMAND | awk '{ print $1 }'`
-                # these are the programs I commonly use, and how I want them
-                # to be visualized
-                case "$mycmd" in
-                    vi)     mycmd="VIM" ;;
-                    vim)    mycmd="VIM" ;;
-                    less)   mycmd="LESS" ;;
-                    sftp)   mycmd="SFTP" ;;
-                    *)      mycmd=`echo $mycmd | sed 's/.*\///'` ;;
-                esac
+#case "$TERM" in
+#xterm*|rxvt*)
+    ## Show the currently running command in the terminal title:
+    ## http://www.davidpashley.com/articles/xterm-titles-with-bash.html
+    #show_command_in_title_bar()
+    #{
+        #case "$BASH_COMMAND" in
+            #*\033]0*)
+                ## The command is trying to set the title bar as well;
+                ## this is most likely the execution of $PROMPT_COMMAND.
+                ## In any case nested escapes confuse the terminal, so don't
+                ## output them.
+                #;;
+            #*)
+                #DEFAULT_TITLE="${USER}@${UNISONLOCALHOSTNAME}: ${PWD}"
+                #mycmd=`echo $BASH_COMMAND | awk '{ print $1 }'`
+                ## these are the programs I commonly use, and how I want them
+                ## to be visualized
+                #case "$mycmd" in
+                    #vi)     mycmd="VIM" ;;
+                    #vim)    mycmd="VIM" ;;
+                    #less)   mycmd="LESS" ;;
+                    #sftp)   mycmd="SFTP" ;;
+                    #*)      mycmd=`echo $mycmd | sed 's/.*\///'` ;;
+                #esac
 
-                echo -ne "\033]0;(${mycmd}) ${DEFAULT_TITLE}\007"
-                ;;
-        esac
-    }
+                #echo -ne "\033]0;(${mycmd}) ${DEFAULT_TITLE}\007"
+                #;;
+        #esac
+    #}
     
-    trap show_command_in_title_bar DEBUG
-    ;;
-*)
-    ;;
-esac
+    #trap show_command_in_title_bar DEBUG
+    #;;
+#*)
+    #;;
+#esac
 
 # ls has different color behavior on different system; on most systems I
 # want to use the -G option. If it is different for a specific computer, I
@@ -79,7 +79,7 @@ alias lo="exit"     # 'lo' as in 'logout'. You have no idea how nice this is
 alias pingg="ping google.com"  # regularly used in checking connectivity
 # cloc is a script to Count Lines Of Code (in my ~/.scripts/ directory) 
 # somebody else wrote it, but I use it to gauge how much coding I've done
-alias cloc="cloc-1.60.pl --no3 --exclude-dir=.svn --not-match-f=y.tab.. --not-match-f=lex.yy.c --exclude_dir docs"
+alias cloc="cloc-1.66.pl --no3 --exclude-dir=.svn --not-match-f=y.tab.. --not-match-f=lex.yy.c --exclude_dir docs"
 # I don't use Midnight Commander, but kept accidentally launching it when I
 # typed "mc" instead of "mv"
 alias mcmc="/usr/bin/mc" # we assume that's where it is kept
@@ -111,15 +111,14 @@ alias yesterday="date -v -1d +%Y%m%d"
 #  `today`   `today -1`  `today -1m` .... etc
 alias nextmon="date -v+1d -v+Mon +%Y%m%d" # weekly Monday meetings
 
-alias ipynb="ipython notebook"
+alias ipynb="jupyter notebook"
 
 
 # everybody's got an mkcd function, right? There are probably better
 # implementations out there
 function mkcd
 {
-    command mkdir "$@"
-    command cd "$@"
+    mkdir "$@" && cd $_
 }
 
 # when you need to remove more than MAXFILES files ....
@@ -189,4 +188,7 @@ export GNUPLOT_LIB=$GNUPLOT_LIB:~/.gnuplotd
 # officially set up for gdb, but might be useful elsewhere:
 export EDITOR=vim
 
-source ~/.scripts/git-completion.bash
+if [ $SHELL = "bash" ]
+then
+  source ~/.scripts/git-completion.bash
+fi

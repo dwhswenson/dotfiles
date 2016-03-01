@@ -22,7 +22,8 @@ export GSL_CFLAGS=`gsl-config --cflags`
 export GSL_LDFLAGS=`gsl-config --libs`
 
 
-export VMDCMD=/Applications/VMD\ 1.9.1.app/Contents/MacOS/startup.command
+#export VMDCMD=/Applications/VMD\ 1.9.1.app/Contents/MacOS/startup.command
+export VMDCMD=/Applications/VMD\ 1.9.2.app/Contents/MacOS/startup.command
 
 function hbtemp
 {
