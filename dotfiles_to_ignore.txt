@@ -35,6 +35,12 @@
 .xmoto
 .supertuxkart
 .fseventsd
+.zcompdump
+.zcompdump-Yvette-5.0.5
+.zcompdump-Yvette-5.1.1
+.zsh-update
+.zsh_history
+.zshrc.pre-oh-my-zsh
 
 # used for wine?
 .local

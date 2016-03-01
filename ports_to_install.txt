@@ -7,46 +7,9 @@ port install wine
 
 ## working environment
 # Vim set up for power users
-port install vim +cscope +huge +python27 +python33
+port install vim +cscope +huge +python27 +python34 +python35
 # ctags and cscope help browing code, esp. in vim
 port install ctags cscope
-
-## python stuff
-port install python27 # for python 2 work; already installed in vim
-port install python33 # for python 3 work; already installed in vim
-# python 2.7 was installed as 
-port select --set python python27
-# matplotlib for plotting
-port install py27-matplotlib +latex +cairo +tkinter
-# scipy does a lot of the heavy lifting on science stuff. Includes numpy
-port install py27-scipy
-port install py27-pandas
-port select --set cython cython27
-port select --set sphinx py27-sphinx
-port install py27-jupyter py27-ipython +notebook +scientific
-port select --set ipython ipython27
-port install py27-scikit-learn
-port select --set nosetests nosetests27
-port install py27-coverage py27-pip py27-netcdf4
-port select --set pip pip27
-port install py27-yaml
-port install py27-virtualenvwrapper
-port install py27-flake8 py27-pylint
-port select --set pep8 pep827
-port select --set pyflakes py27-pyflakes
-port select --set flake8 flake827
-port select --set pylint pylint27
-port install py-networkx
-port install py-graphviz
-
-## pip installs: 
-# pip install numexpr tables pandas # handled by ports now?
-pip install numpydoc sphinx-rtd-theme
-pip install fastcluster msmbuilder
-pip install mdtraj
-pip install pymbar --pre
-pip install svgwrite
-pip install line_profiler
 
 # compiling dynamiq
 port install bison
@@ -62,21 +25,17 @@ port install git +bash_completion +svn +credential_osxkeychain +doc +pcre +perl5
 port install cmake
 port install gdb
 
+# TeX install stuff
+port install texlive +medium +doc
+# +full variant includes a bunch of languages I don't need; can always add
+# other languages as desired
+
 # plotting and making graphics
 port install gnuplot +aquaterm +luaterm +pangocairo +wcwidgets +x11
 port install grace +universal
 port install ImageMagick
 port install ffmpeg
 port install MPlayer
-
-# extra TeX stuff (note that most was installed with matplotlib)
-port install texlive +full
-# note that you may wish to uninstall some of the language packages after
-# installing this metaport, in particular
-# texlive-lang-african texlive-lang-arabic texlive-lang-czechslovak
-# texlive-lang-indic texlive-lang-italian texlive-lang-japanese
-# texlive-lang-korean texlive-lang-other texlive-lang-polish
-# texlive-lang-portuguese
 
 # simulating
 ## install openmm via its binary
@@ -86,8 +45,3 @@ port install gromacs
 port install htop glances lynx mutt pandoc
 port install gzip p7zip
 port install tmux 
-# reduce doesn't seem to be working right now with a MacPorts install
-# ?? port -s install reduce-algebra 
-
-# didn't bother with:
-# clang-3.3

@@ -22,21 +22,38 @@ in an effort to maximize my sanity.
         sudo xcodebuild -license
         cd ~ && git clone --recursive http://github.com/dwhswenson/dotfiles.git
         cd dotfiles
-        # correct my git config info
+        # correct my git config info if $HOME is not /Users/dwhs/
         ./install
-        ./defaults_write
+        #./defaults_write #TODO
         sudo sh < ports_to_install.txt
+        # switch to zsh
+        sudo chsh -s /opt/local/bin/zsh
         # Vundle plugins
-        # YCM install
+        vim "+PluginInstall" "+q" "+q"
+        # Python install (using MacPorts -- others might prefer conda)
+        sudo sh < ports_python.txt
 
-7. App Store: get what you need
 
-8. [OmniFocus]()
+7. [YouCompleteMe](https://github.com/Valloric/YouCompleteMe): should be
+   downloaded by Vundle, but need to compile
 
-9. [OmniGraffle]()
+        cd ~/.vim/bundle/YouCompleteMe
+        ./install.py --clang-completer
 
-10. [Adium](https://adium.im/)
+8. App Store: get what you need
 
-11. [f.lux]()
+9. [OmniFocus]()
 
-12. [Papers]()
+10. [OmniGraffle]() (old version needs to be installed from disk)
+
+12. [Adium](https://adium.im/)
+
+12. [f.lux]()
+
+13. [Papers]()
+
+14. [OmniPlan]()
+
+15. [Grace]()
+
+16. [Sage](http://www.sagemath.org/)
