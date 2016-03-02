@@ -1,0 +1,22 @@
+# for a while I used a URL-schema called cdvi to cd to a directory and then
+# vi a file. This parses the URL, or can be used as a non-URL command
+function cdvi
+{
+    cleaned=`echo $@ | sed 's/cdvi:\/\///'`
+    basedir=`echo $cleaned | sed 's/\(.*\)\/\(.*\)/\1/'`
+    fname=`echo $cleaned | sed 's/\(.*\)\/\(.*\)/\2/'`
+    cd $basedir
+    vi $fname
+}
+
+# generates cdvi URLs for files given as arguments. Assumes existence of
+# said files.
+function cdvi-gen
+{
+    for file in $@
+    do
+      echo "cdvi://${PWD}/$file"
+    done
+}
+
+

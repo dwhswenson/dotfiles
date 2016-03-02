@@ -10,13 +10,7 @@ export DYNAMIQ_BASEDIR=~/research/md
 alias unison="unison -ui text" # may be needed for all Mac OS X soon
 
 # MultiMarkdown
-alias multimarkdown="$HOME/Library/Application\ Support/MultiMarkdown/bin/MultiMarkdown.pl"
-
-
-# for some reason, perl needs these things
-export LANGUAGE=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+#alias multimarkdown="$HOME/Library/Application\ Support/MultiMarkdown/bin/MultiMarkdown.pl"
 
 export GSL_CFLAGS=`gsl-config --cflags`
 export GSL_LDFLAGS=`gsl-config --libs`
@@ -25,17 +19,12 @@ export GSL_LDFLAGS=`gsl-config --libs`
 #export VMDCMD=/Applications/VMD\ 1.9.1.app/Contents/MacOS/startup.command
 export VMDCMD=/Applications/VMD\ 1.9.2.app/Contents/MacOS/startup.command
 
-function hbtemp
-{
-    command cp /Users/dwhs/Sites/hyperblazer.net/hyperblazer.template "$@"
-}
-
 the_archives="/Users/dwhs/Documents/The_Archives"
 alias shakespeare="more $the_archives/Gutenburg/Shakespeare/shaks12.txt"
 alias bible="more $the_archives/Gutenburg/Religion/Bible/bible11.txt"
 
 # aliases to programs
+# TODO: if these still exist, they should be replaced with symlinks
 alias mplayer="/Applications/MPlayer\ OS\ X\ 2.app/Contents/Resources/mplayer.app/Contents/MacOS/mplayer"
-alias GAMESS="/Applications/GAMESS/gamess/gms"
 alias octave="/Applications/Octave.app/Contents/Resources/bin/octave"
 

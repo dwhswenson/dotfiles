@@ -14,3 +14,9 @@ function trunkdiff {
     opendiff $1 ${DYNQ}/$1 -merge $1
 }
 
+function mydynamiq
+{
+    BASEDIR_SAFE=`echo $DYNAMIQ_BASEDIR | sed 's:\/:\\\/:g'`
+    BRANCH=`pwd -P | sed "s/$BASEDIR_SAFE\/\(branches\/[^\/]*\/[^\/]*\).*/\1/"`
+    echo "${DYNAMIQ_BASEDIR}/${BRANCH}/dynamiq"
+}

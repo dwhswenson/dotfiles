@@ -1,0 +1,67 @@
+# $HOME/.bashrcs/bashrc_theming
+
+# Personalized "theme"-related stuff specific to using bash
+# NOTE: machine-specific stuff must be loaded first (to obtain, e.g.,
+# $UNISONLOCALHOSTNAME)
+
+
+PS1="${UNISONLOCALHOSTNAME}:\w \u$ "
+PROMPT_COMMAND='echo -ne "\033]0;${USER}@${UNISONLOCALHOSTNAME}: ${PWD}\007"'
+# This next thing is to convince bash to show the currently running process
+# in the window title. This can be extremely useful when you have a lot of
+# tabs open: lets you quickly check what is running in each tab.
+# stolen wholesale from: http://mg.pov.lt/blog/bash-prompt.html
+case "$TERM" in
+xterm*|rxvt*)
+    # Show the currently running command in the terminal title:
+    # http://www.davidpashley.com/articles/xterm-titles-with-bash.html
+    show_command_in_title_bar()
+    {
+        case "$BASH_COMMAND" in
+            *\033]0*)
+                # The command is trying to set the title bar as well;
+                # this is most likely the execution of $PROMPT_COMMAND.
+                # In any case nested escapes confuse the terminal, so don't
+                # output them.
+                ;;
+            *)
+                DEFAULT_TITLE="${USER}@${UNISONLOCALHOSTNAME}: ${PWD}"
+                mycmd=`echo $BASH_COMMAND | awk '{ print $1 }'`
+                # these are the programs I commonly use, and how I want them
+                # to be visualized
+                case "$mycmd" in
+                    vi)     mycmd="VIM" ;;
+                    vim)    mycmd="VIM" ;;
+                    less)   mycmd="LESS" ;;
+                    sftp)   mycmd="SFTP" ;;
+                    *)      mycmd=`echo $mycmd | sed 's/.*\///'` ;;
+                esac
+
+                echo -ne "\033]0;(${mycmd}) ${DEFAULT_TITLE}\007"
+                ;;
+        esac
+    }
+    
+    trap show_command_in_title_bar DEBUG
+    ;;
+*)
+    ;;
+esac
+
+# tell bash to use vi bindings (really, I should edit .inputrc so that
+# everything that uses readline will recognize this preference)
+set -o vi
+
+# a joke I play on myself when I try for ls, but my finger slips after the s
+#  -- sadly, this only makes sense right now for lsd -1; lsd -l is awful
+function lsd
+{
+    for file in `ls $@`
+    do
+        echo "$(tput setaf $((${RANDOM} % 7 + 1)) )$file"
+    done 
+    echo "$(tput sgr0)If the doors of perception were cleansed, everything would appear to man as it "
+    echo "is, infinite.................................................................."
+}
+
+
