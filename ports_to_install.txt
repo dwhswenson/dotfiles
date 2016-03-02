@@ -7,7 +7,7 @@ port install wine
 
 ## working environment
 # Vim set up for power users
-port install vim +cscope +huge +python27 +python34 +python35
+port install vim +cscope +huge +python27 +python35 #only one py3x allowed
 # ctags and cscope help browing code, esp. in vim
 port install ctags cscope
 

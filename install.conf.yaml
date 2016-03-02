@@ -6,7 +6,10 @@
     ~/.gitignore_global: gitignore_global
     ~/.gnuplot: gnuplot
     ~/.gnuplotd: gnuplotd/
+    ~/.scripts: scripts/
     ~/.vim: vim/
     ~/.vimrc: vimrc
-    ~/.scripts: scripts/
+    ~/.vmdrc: vmdrc
+    ~/.wgetrc: wgetrc
+    ~/.zshrc: zshrc
 
