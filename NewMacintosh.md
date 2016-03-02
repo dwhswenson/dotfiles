@@ -4,7 +4,10 @@ Here is the sequence in which I should download things when I get a new Mac,
 in an effort to maximize my sanity.
 
 
-1. App Store: Start with XCode (that will take a while)
+1. App Store: Install XCode. Once installed, run:
+
+        sudo xcodebuild -license
+        sudo xcode-select --install
 
 2. [Google Chrome](http://www.google.com/chrome/)
 
@@ -19,19 +22,22 @@ in an effort to maximize my sanity.
 
 6. [MacPorts](https://www.macports.org/)
 
-        sudo xcodebuild -license
         cd ~ && git clone --recursive http://github.com/dwhswenson/dotfiles.git
         cd dotfiles
+        # (a) Install my dotfiles
         # correct my git config info if $HOME is not /Users/dwhs/
         ./install
         #./defaults_write #TODO
+        # (b) Install most MacPorts packages
         sudo sh < ports_to_install.txt
+        # (c) Install python MacPorts packages (others might prefer conda)
+        sudo sh < ports_python.txt
+        # (d) Miscellaneous post-MacPorts cleanup
         # switch to zsh
         sudo chsh -s /opt/local/bin/zsh
+        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
         # Vundle plugins
         vim "+PluginInstall" "+q" "+q"
-        # Python install (using MacPorts -- others might prefer conda)
-        sudo sh < ports_python.txt
 
 
 7. [YouCompleteMe](https://github.com/Valloric/YouCompleteMe): should be
@@ -57,3 +63,15 @@ in an effort to maximize my sanity.
 15. [Grace]()
 
 16. [Sage](http://www.sagemath.org/)
+
+18. [OpenMM](http://openmm.org/)
+
+19. Link various things to `~/bin/`:
+
+        mkdir ~/bin && cd ~/bin
+        ln -s /opt/local/bin/ggdb gdb
+        # VMD
+        # grace?
+        ln -s /Applications/SageMath*.app/Contents/Resources/sage/sage sage
+        # bin also has flatex and pyclewn stuff... might be useful
+        # latexrevise, too. And a nice nbstripout (only old style ipynbs?)

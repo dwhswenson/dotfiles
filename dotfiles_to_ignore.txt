@@ -13,6 +13,7 @@
 .cache
 .com.apple.timemachine.supported
 .crack-attack
+.dropbox
 .dvdcss
 .etracer
 .gdb_history
@@ -21,6 +22,7 @@
 .gdb_history
 .gnuplot_history
 .jpi_cache
+.histfile
 .lldb-history
 .mysql_history
 .sqlite_history
@@ -35,6 +37,7 @@
 .xmoto
 .supertuxkart
 .fseventsd
+.ipynb_checkpoints
 .zcompdump
 .zcompdump-Yvette-5.0.5
 .zcompdump-Yvette-5.1.1
@@ -44,6 +47,11 @@
 
 # used for wine?
 .local
+
+# reinstall these every time
+.oh-my-zsh
+.iterm2_shell_integration.bash
+.iterm2_shell_integration.zsh
 
 
 .thumbnails
