@@ -12,4 +12,5 @@
     ~/.vmdrc: vmdrc
     ~/.wgetrc: wgetrc
     ~/.zshrc: zshrc
+    ~/Library/texmf: texmf/ # on a Mac, at least
 
