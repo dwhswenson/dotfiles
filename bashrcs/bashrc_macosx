@@ -47,12 +47,15 @@ alias xcode="open -a XCode"
 alias maillog="cat /var/log/mail.log"
 alias x11="open -g -a XQuartz" # post Mountain Lion, need XQuartz, not X11
 alias xssh="open -g -a XQuartz && ssh -X" 
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-#export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH
 # fucking MacPorts
+MACPORTS_PATH=/opt/local/bin:/opt/local/sbin
+# fucking jupyter: who the hell install themselves here?
+MACPORTS_PATH=$MACPORTS_PATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin
 #export LD_LIBRARY_PATH=/opt/local/Library/Frameworks/Python.framework/Versions/Current/lib:/opt/local/lib:$LD_LIBRARY_PATH
 # fucking Gromacs in MacPorts
-export PATH=$PATH:/opt/local/lib/gromacs/bin
+MACPORTS_PATH=$MACPORTS_PATH:/opt/local/lib/gromacs/bin
+
+export PATH=$MACPORTS_PATH:$PATH
 export MANPATH=$MANPATH:/opt/local/man
 
 alias services-rebuild="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"

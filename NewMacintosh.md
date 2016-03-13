@@ -34,8 +34,9 @@ in an effort to maximize my sanity.
         sudo sh < ports_python.txt
         # (d) Miscellaneous post-MacPorts cleanup
         # switch to zsh
-        sudo chsh -s /opt/local/bin/zsh
         sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc # RESPECT MY ZSHRC, OMZ!
+        sudo chsh -s /opt/local/bin/zsh dwhs # or whatever my username is
         # Vundle plugins
         vim "+PluginInstall" "+q" "+q"
 
@@ -72,6 +73,13 @@ in an effort to maximize my sanity.
         ln -s /opt/local/bin/ggdb gdb
         # VMD
         # grace?
-        ln -s /Applications/SageMath*.app/Contents/Resources/sage/sage sage
+        ln -s /Applications/SageMath*.app/Contents/Resources/sage/sage
+        ln -s ~/dotfiles/misc_scripts/cloc/cloc
         # bin also has flatex and pyclewn stuff... might be useful
         # latexrevise, too. And a nice nbstripout (only old style ipynbs?)
+        cd ~
+        ln -s Dropbox/dynamiq-md/engine dynq_engine
+        ln -s Dropbox/dynamiq-md/samplers dynq_samplers
+        ln -s Dropbox/pyWigner # or does this go into dynamiq-md?
+        ln -s Dropbox/msm-tis ops
+        ln -s Dropbox/writing 

@@ -24,8 +24,8 @@ done
 
 # here's the only place where you decide whether py2 or py3 is primary
 port select --set python python${py_primary}
-port select --set ipython ipython${py_primary}
-port select --set python3 py${py_primary}-python$
+port select --set ipython py${py_primary}-ipython
+port select --set python3 python${py_secondary}
 port select --set ipython3 py${py_secondary}-ipython
 
 port select --set cython cython${py_primary}

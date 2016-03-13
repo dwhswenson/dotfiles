@@ -45,3 +45,9 @@ port install gromacs
 port install htop glances lynx mutt pandoc
 port install gzip p7zip
 port install tmux 
+
+# I don't actually use these so frequently, but it's worth having them
+# around on occasion
+# both require atlas, which takes forever to build: install later if desired
+#port install r 
+#port install octave

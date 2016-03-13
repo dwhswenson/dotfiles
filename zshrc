@@ -1,8 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/dwhs/.oh-my-zsh
 
-# TODO: clean this up to separate bash and zsh stuff
-source ~/.bashrc
 
 alias cbio_mount="sshfs hal:/cbio ~/local_cbio -ovolname=cbio"
 alias cbio_unmount="umount /Users/dwhs/local_cbio"
@@ -61,11 +59,14 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/local/lib/gromacs/bin:/usr/local/bin:/Users/dwhs/bin:/usr/local/scripts/:/Users/dwhs/.scripts:/Users/dwhs/bin"
-export PATH="/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH"
+#export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/local/lib/gromacs/bin:/usr/local/bin:/Users/dwhs/bin:/usr/local/scripts/:/Users/dwhs/.scripts:/Users/dwhs/bin"
+#export PATH="/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+#
+# TODO: clean this up to separate bash and zsh stuff
+source ~/.bashrc
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
