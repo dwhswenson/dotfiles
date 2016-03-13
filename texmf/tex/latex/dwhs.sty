@@ -1,0 +1,106 @@
+% These are a few of my favorite things
+\ProvidesPackage{dwhs}
+
+\usepackage{xspace}
+
+% general text commands
+% later to become dwhstex.sty
+\newcommand{\ie}{\textit{i.e.}}
+\newcommand{\eg}{\textit{e.g.}}
+\newcommand{\etal}{\textit{et al\@ifnextchar.{}{.\@} }}
+\newcommand{\apriori}{\textit{a priori}} 
+\newcommand{\abinitio}{\textit{ab initio}}
+\newcommand{\adhoc}{\textit{ad hoc}}
+
+\newcommand{\degree}{ \ensuremath{ {}^\circ} }
+
+\newcommand{\needed}{\ensuremath{^\text{{\tiny{[\textit{cite}]~}}}}} 
+       % citation needed
+\def\kw#1{\texttt{#1}}
+\def\vocab#1{\textbf{#1}}
+
+%\usepackage[usenames,dvipsnames]{xcolor}
+%\usepackage{soul}
+%\def\added#1{\textbf{\color{blue}#1}}
+%\def\deleted#1{{\color{red}\st{#1}}}
+
+
+% general math commands
+% later to become dwhsmath.sty
+\newcommand{\del}{\nabla}
+\newcommand\pd[2][]{\ensuremath{\partial^{#1}{#2}\thinspace}} % partial dA
+\newcommand\dd[2][]{\ensuremath{\mathrm{d}^{{#1}}{{#2}}
+                                 \thinspace}} % differential dA
+\newcommand\diffop[2][]{\ensuremath{\frac{\dd[#1]{}}
+                                         {\dd{#2^{#1}}}}}  % d/dx
+\newcommand\pdiffop[2][]{\ensuremath{\frac{\pd[#1]{}}
+                                         {\pd{#2^{#1}}}}}  % d/dx
+\def\ddiff#1#2{\frac{\dd{#1}}{\dd{#2}}}
+\def\pdiff#1#2{\frac{\pd{#1}}{\pd{#2}}}
+\def\magnitude#1{\left|#1\right|} % magnitude of a vector/number
+\def\abs#1{\left|#1\right|} % definition of absolute value
+\def\expect#1{\left<#1\right>} % expectation value
+
+% these may change according to style preferences, but this keeps semantics
+% separate from presentation
+\def\vect#1{\mathbf{#1}} % vector
+\def\mat#1{\mathbf{#1}} % matrix
+\def\conj#1{#1^*} % complex conjugate
+\def\adj#1{#1^\dag} % (Hermitian) adjoint
+%\def\transpose#1{\ensuremath{\,{}^t\! #1}} % French-style: pre-super t
+\def\transpose#1{\ensuremath{ #1^\mathsf{T} }}
+
+\def\units#1{\ensuremath{\;\mathrm{#1}}}
+\def\pprime{{\prime\prime}} % double prime
+\def\EE#1{\times 10^{#1}}
+
+\def\CHK#1{\ensuremath{\mathcal{C}^\text{HK}_{#1}}}
+
+\newcommand{\kB}{\ensuremath{k_\text{B}}}
+
+
+\usepackage{amsmath}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Tr}{Tr}
+
+\def\op#1{\hat{#1}} % operators
+\def\bra#1{\left\langle #1 \right|} % <#1|
+\def\ket#1{\left| #1 \right\rangle} % |#1>
+\def\braket#1#2{\left\langle #1 \middle| #2 \right\rangle} % <#1|#2>
+\def\BraKet#1#2#3{\left\langle #1 \middle| #2 \middle| #3 \right\rangle}
+% <#1|#2|#3>
+
+\def\adaga#1#2{\ensuremath{\op{a}^\dag_{#1}\op{a}_{#2}}}
+
+\newcommand{\spinup}{\upharpoonleft}
+\newcommand{\spindown}{\downharpoonright}
+
+% constants
+% later to be named dwhsconst.sty
+% (of use when writing up solutions)
+% \usepackage{dwhsmath}
+\def\plankJs{6.626 \times 10^{-34} \units{J \cdot s}}
+\def\lightspeedm{2.99 \times 10^{8} \units{m/s}}
+\def\electronchargeC{1.602 \times 10^{-19} \units{C}}
+\def\electronmasskg{9.11 \times 10^{-31} \units{kg}}
+\def\avogadro{6.022\times 10^{23}}
+\def\hbarJs{1.05\EE{-34} \units{J\cdot s}}
+\def\boltzmannJK{1.38\EE{-23}\units{J\cdot K^{-1}}}
+
+% For exercise sheets and solution sets
+% later to become dwhsexo.sty
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{exo}{Exercise}
+\newtheorem{lemma}{Lemma}
+\usepackage{soul}
+\def\ans#1{\textrm{\hl{#1}}} % this may change to an ifelse with color
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\fancypagestyle{HALlastpage}{
+  \fancyfoot[c]{ {\footnotesize This document provided under the HyperBlazer
+  Academic License. \\ For details, see
+  http://www.hyperblazer.net/AcademicLicense/}}
+}
+% to use -- on last page, "\thispagestyle{HALlastpage}"
