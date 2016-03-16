@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+
+# A script to quickly open relevant GitHub pages. Put it in your $PATH to
+# use it.
+# 
+# By default, this will open the upstream remote's page. A different remote
+# can be chosen by listing that remote as an argument.
+# Options: 
+#   -p, --pr
+#       With no argument, this gives you the pull request page of the
+#       desired remote. With a numeric argument (must be set as -p=NUM or
+#       --pr=NUM), this gives you the pull request with that number.
+#   -i, --iss, --issues
+#       With no argument, this gives you the issues page of the desired
+#       remote. With a numeric argument (must be set as -i=NUM, --iss=NUM or
+#       --issues=NUM), this gives you the issue with that number.
+#   -u, --user
+#       With no argument, this gives you the user set in environment
+#       variable $GIHUBUSER or the main github.com page if that environment
+#       variables isn't set. With an argument, it gives you that user's
+#       github page.
+#   -g, --gh
+#       Goes straight to github.com.
+
+# (c) 2016 David W.H. Swenson. Released under MIT license.
+
+# default behaviors
+REMOTE="upstream" 
+SUBURL=""
+
+# parse options to get remote and suburl
+while [[ $# -gt 0 ]]
+do
+    key=$1
+    
+    case $key in 
+        -p|--pr)
+            numify=`echo $2 | grep "[0-9]\+"`
+            if [[ "$2" != "" && "$numify" = "$2" ]]
+            then
+                SUBURL="pull/$2"
+                shift
+            else
+                SUBURL="pulls"
+            fi
+            ;;
+        --pr=*)
+            NUM=${key#*=}
+            SUBURL="pull/$NUM"
+            ;;
+        -i|--iss|--issues)
+            numify=`echo $2 | grep "[0-9]\+"`
+            if [[ "$2" != "" && "$numify" = "$2" ]]
+            then
+                SUBURL="issues/$2"
+                shift
+            else
+                SUBURL="issues"
+            fi
+            ;;
+        --issue=*)
+            NUM=${key#*=}
+            SUBURL="issues/$NUM"
+            ;;
+        -u|--user)
+            if [ "$2" != "" ]
+            then
+                USERNAME=$2
+            else
+                USERNAME=$GITHUBUSER
+            fi
+            open "http://github.com/$USERNAME"
+            exit
+            ;;
+        --user=*)
+            USERNAME=${key#*=}
+            open "http://github.com/$USERNAME"
+            exit
+            ;;
+        -g|--gh)
+            open "http://github.com"
+            ;;
+        *)
+            REMOTE="$key"
+            ;;
+    esac
+    shift
+done
+
+url=`git remote -v | grep "$REMOTE" | grep "fetch" | 
+     sed 's/git\@//; s/\:/\//' | awk '{print $2}'`
+
+
+
+if [ "$url" != "" ]
+then
+    open "http://$url/$SUBURL"
+fi

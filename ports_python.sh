@@ -20,6 +20,7 @@ port install py${pyV}-virtualenvwrapper
 port install py${pyV}-flake8 py${pyV}-pylint
 port install py${pyV}-networkx
 port install py${pyV}-graphviz
+port install py${pyV}-psutil
 done
 
 # here's the only place where you decide whether py2 or py3 is primary

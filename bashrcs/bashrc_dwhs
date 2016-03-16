@@ -17,6 +17,7 @@ alias ls="ls -F ${LS_COLOR_OPT}"
 alias sssh="ssh -o 'PubkeyAuthentication=no'"
 
 alias gittyup="git fetch upstream && git merge upstream/master"
+export GITHUBUSER="dwhswenson"
 
 # how I think a few commands SHOULD work by default
 alias rm="rm -i"

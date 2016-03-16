@@ -40,7 +40,6 @@ alias xvmd='xtermrun "${VMDCMD}"'
 
 # Mac specific
 alias apachestart="sudo /Library/Apache2/bin/apachectl graceful"
-alias web="open -a Firefox"
 alias comp="opendiff"
 alias open.="open ."
 alias xcode="open -a XCode"
