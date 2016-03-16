@@ -79,6 +79,10 @@ do
             ;;
         -g|--gh)
             open "http://github.com"
+            exit
+            ;;
+        -n)
+            SUBURL="network"
             ;;
         *)
             REMOTE="$key"
