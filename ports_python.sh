@@ -46,5 +46,6 @@ pip install fastcluster msmbuilder
 pip install pymbar --pre
 pip install svgwrite
 pip install line_profiler
+pip install gprof2dot
 
 
