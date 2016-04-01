@@ -47,5 +47,5 @@ pip install pymbar --pre
 pip install svgwrite
 pip install line_profiler
 pip install gprof2dot
-
+pip install nglview # ipython notebook trajectory visualization
 
