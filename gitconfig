@@ -1,6 +1,7 @@
 [user]
 	email = dwhs@hyperblazer.net
 	name = David W.H. Swenson
+	signingkey = 0AFE1F56
 [core]
 	excludesfile = /Users/dwhs/.gitignore_global
 [push]
