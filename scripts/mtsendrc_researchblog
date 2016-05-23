@@ -4,7 +4,7 @@ default=researchblog
 [site-researchblog]
 url=http://researchblog.hyperblazer.net/xmlrpc.php
 username=dwhs
-password=hbzaac
+password=######
 
 [blog-researchblog]
 site=researchblog

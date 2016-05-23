@@ -69,7 +69,7 @@ let g:ycm_key_invoke_completion = '<S-TAB>'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_filetype_blacklist = { 'tagbar' : 1, 'qf' : 1, 'notes' : 1,
     \ 'markdown' : 1, 'unite' : 1, 'text' : 1, 'vimwiki' : 1, 'pandoc' : 1,
-    \ 'infolog' : 1, 'mail' : 1, 'gitcommit' : 1, 'tex' : 1 }
+    \ 'infolog' : 1, 'mail' : 1, 'gitcommit' : 1, 'tex' : 1, 'rst' : 1}
 
 
 " for TDD with nosetests

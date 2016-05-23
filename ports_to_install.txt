@@ -27,6 +27,8 @@ port install gdb
 
 # TeX install stuff
 port install texlive +medium +doc
+port install texlive-fonts-extra texlive-formats-extra 
+port install texlive-generic-extra texlive-latex-extra
 # +full variant includes a bunch of languages I don't need; can always add
 # other languages as desired
 
@@ -36,6 +38,7 @@ port install grace +universal
 port install ImageMagick
 port install ffmpeg
 port install MPlayer
+port install graphviz
 
 # simulating
 ## install openmm via its binary
