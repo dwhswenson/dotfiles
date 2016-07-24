@@ -54,3 +54,5 @@ port install tmux
 # both require atlas, which takes forever to build: install later if desired
 #port install r 
 #port install octave
+# note: octave may no longer need atlas -- defaults to build-in Accelerate
+# framework?

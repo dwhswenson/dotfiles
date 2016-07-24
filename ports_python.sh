@@ -12,7 +12,8 @@ port install py${pyV}-matplotlib +latex +cairo +tkinter
 # scipy does a lot of the heavy lifting on science stuff. Includes numpy
 port install py${pyV}-scipy
 port install py${pyV}-pandas
-port install py${pyV}-jupyter py${pyV}-ipython 
+port install py${pyV}-jupyter py${pyV}-ipython
+port install py${pyV}-ipyparallel
 port install py${pyV}-scikit-learn
 port install py${pyV}-coverage py${pyV}-pip py${pyV}-netcdf4
 port install py${pyV}-yaml
