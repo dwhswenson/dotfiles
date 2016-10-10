@@ -4,7 +4,9 @@
 # python 2.7 was installed as 
 # matplotlib for plotting
 py_primary="27"
+py_primary_short="2"
 py_secondary="35"
+py_secondary_short="3"
 for pyV in ${py_primary} ${py_secondary}
 do
 port install python${pyV} 
@@ -49,4 +51,9 @@ pip install svgwrite
 pip install line_profiler
 pip install gprof2dot
 pip install nglview # ipython notebook trajectory visualization
+pip install ujson # fast json library used by OPS
+
+
+# set up secondary ipynb kernel
+ipython${py_secondary_short} kernel install
 

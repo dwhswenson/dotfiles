@@ -56,3 +56,4 @@ port install tmux
 #port install octave
 # note: octave may no longer need atlas -- defaults to build-in Accelerate
 # framework?
+port install julia

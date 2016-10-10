@@ -16,7 +16,7 @@ alias ls="ls -F ${LS_COLOR_OPT}"
 # an extra s to ignore keys
 alias sssh="ssh -o 'PubkeyAuthentication=no'"
 
-alias gittyup="git fetch upstream && git merge upstream/master && git push"
+alias gittyup="git fetch upstream && git merge -S upstream/master && git push"
 export GITHUBUSER="dwhswenson"
 
 # how I think a few commands SHOULD work by default
