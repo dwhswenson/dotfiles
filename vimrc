@@ -185,6 +185,21 @@ else
 :source $HOME/.vim/plugins_vim7/a.vim
 endif
 
+:function LongLinesFileConfig()
+:set wrap
+:set linebreak
+:set nolist
+:inoremap <Down> <C-o>g<Down>
+:inoremap <Up> <C-o>g<Up>
+:nmap <Down> g<Down>
+:nmap <Up> g<Up>
+:set tw=0
+:set fo-=l
+:set fo-=t
+:endfunction
+
+:noremap <leader>l :call LongLinesFileConfig()<CR>
+
 
 " this is some cool stuff for when we use pyclewn for debugging
 :function Pyclewnmappings()
