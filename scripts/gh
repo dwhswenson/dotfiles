@@ -91,8 +91,8 @@ do
     shift
 done
 
-url=`git remote -v | grep "$REMOTE" | grep "fetch" | 
-     sed 's/git\@//; s/\:/\//' | awk '{print $2}'`
+url=`git remote -v | grep "$REMOTE" | grep "fetch" | awk '{print $2}' |
+     sed 's/^git\@//; s/^https*\:\/\///; s/\:/\//'`
 
 
 
