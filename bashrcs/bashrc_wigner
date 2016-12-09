@@ -15,7 +15,7 @@ alias unison="unison -ui text"
 export DYNAMIQ_BASEDIR="/Users/dwhs/Documents/research/md"
 
 # TODO: update with symlink instead?
-VMDCMD="/Applications/VMD1.8.7.app/Contents/MacOS/startup.command"
+VMDCMD="vmd_command"
 
 # TODO: outdated?
 export GNUPLOT_PS_DIR="/opt/local/share/gnuplot/4.4/PostScript"

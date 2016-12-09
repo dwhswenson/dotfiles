@@ -43,10 +43,12 @@ port install graphviz
 # simulating
 ## install openmm via its binary
 port install gromacs
+#port install pymol  # even this install of pymol fails!
 
 # useful tools
-port install htop glances lynx mutt pandoc
-port install gzip p7zip
+port install htop glances lynx pandoc
+port install neomutt # (replaces mutt; req'd by others)
+port install gzip p7zip wget
 port install tmux 
 
 # I don't actually use these so frequently, but it's worth having them
