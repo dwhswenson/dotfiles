@@ -164,6 +164,7 @@ let g:nosetests_options = "-v -s --cover-erase --cover-html"
 :autocmd BufEnter *.hpp set cindent foldmethod=marker
 
 :autocmd BufRead,BufNewFile *.md set filetype=markdown
+:autocmd BufRead,BufNewFile *.py match Error /\s\+$/
 
 " Even if using folds, I typically want all folds open to start
 :autocmd BufRead * normal zR
