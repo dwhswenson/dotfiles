@@ -8,6 +8,7 @@ port install wine
 ## working environment
 # Vim set up for power users
 port install vim +cscope +huge +python27 +python35 #only one py3x allowed
+port install zsh
 # ctags and cscope help browing code, esp. in vim
 port install ctags cscope
 
@@ -53,9 +54,6 @@ port install tmux
 
 # I don't actually use these so frequently, but it's worth having them
 # around on occasion
-# both require atlas, which takes forever to build: install later if desired
-#port install r 
-#port install octave
-# note: octave may no longer need atlas -- defaults to build-in Accelerate
-# framework?
+port install r 
+port install octave
 port install julia

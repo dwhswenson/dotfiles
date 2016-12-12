@@ -44,7 +44,7 @@ port select --set pylint pylint${py_primary}
 
 ## pip installs: 
 pip install numpydoc sphinx-rtd-theme
-pip install mdtraj # TODO: this should be done via git, for local use
+#pip install mdtraj # TODO: this should be done via git, for local use
 pip install fastcluster msmbuilder
 pip install pymbar --pre
 pip install svgwrite
