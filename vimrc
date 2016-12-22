@@ -135,6 +135,21 @@ let g:nosetests_options = "-v -s --cover-erase --cover-html"
 " Put the document name in the window title
 :set title
 
+" Stolen from
+" https://groups.google.com/forum/#!topic/iterm2-discuss/ZIlszlOHX5o
+set t_ts=]1;
+set t_fs=
+" Set the title of the Terminal to the currently open file
+function! SetTerminalTitle()
+    let titleString = expand('%:t')
+    if len(titleString) > 0
+        let &titlestring = expand('%:t')
+        set title
+    endif
+endfunction
+autocmd BufEnter * call SetTerminalTitle()
+
+
 " filetype plugins are what make vim so impressive
 :filetype plugin indent on
 
