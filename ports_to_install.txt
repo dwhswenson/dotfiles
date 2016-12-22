@@ -25,6 +25,7 @@ port install gsed
 port install git +bash_completion +svn +credential_osxkeychain +doc +pcre +perl5_16 +python27
 port install cmake
 port install gdb
+port install cloc
 
 # TeX install stuff
 port install texlive +medium +doc
