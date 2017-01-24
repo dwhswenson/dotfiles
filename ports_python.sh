@@ -52,6 +52,7 @@ pip install line_profiler
 pip install gprof2dot
 pip install nglview # ipython notebook trajectory visualization
 pip install ujson # fast json library used by OPS
+pip install thefuck
 
 
 # set up secondary ipynb kernel

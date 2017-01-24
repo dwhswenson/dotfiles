@@ -179,6 +179,7 @@ autocmd BufEnter * call SetTerminalTitle()
 :autocmd BufEnter *.hpp set cindent foldmethod=marker
 
 :autocmd BufRead,BufNewFile *.md set filetype=markdown
+" highlight hanging whitespace
 :autocmd BufRead,BufNewFile *.py match Error /\s\+$/
 
 " Even if using folds, I typically want all folds open to start

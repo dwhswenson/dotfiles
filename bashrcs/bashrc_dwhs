@@ -19,6 +19,8 @@ alias sssh="ssh -o 'PubkeyAuthentication=no'"
 alias gittyup="git fetch upstream && git merge -S upstream/master && git push"
 export GITHUBUSER="dwhswenson"
 
+eval "$(thefuck --alias)"
+
 # how I think a few commands SHOULD work by default
 alias rm="rm -i"
 alias ps="ps -o user,pid,tty,%cpu,%mem,nice,state,time,command"
@@ -29,6 +31,8 @@ alias scp="scp -r"
 #a few of my favorite typos/shortcuts
 alias gca="git commit -v -S -a"
 alias gc="git commit -v -S"
+alias ipynb="jupyter notebook"
+alias ipy="ipython"
 alias ls-l="ls -F -l"
 alias cd..="cd .."
 alias lo="exit"     # 'lo' as in 'logout'. You have no idea how nice this is
@@ -59,7 +63,6 @@ alias yesterday="date -v -1d +%Y%m%d"
 #  `today`   `today -1`  `today -1m` .... etc
 alias nextmon="date -v+1d -v+Mon +%Y%m%d" # weekly Monday meetings
 
-alias ipynb="jupyter notebook"
 
 
 # everybody's got an mkcd function, right? There are probably better
