@@ -91,6 +91,12 @@ do
     shift
 done
 
+git_remote=`git remote -v | grep "$REMOTE"`
+
+if [ "$git_remote" == "" ]; then
+    REMOTE="origin"
+fi
+
 url=`git remote -v | grep "$REMOTE" | grep "fetch" | awk '{print $2}' |
      sed 's/^git\@//; s/^https*\:\/\///; s/\:/\//; s/\.git$//'`
 
