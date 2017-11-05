@@ -98,6 +98,12 @@ function swapnames
     fi
 }
 
+function cdP {
+    link_val=`readlink $1`
+    dir_name=`dirname $link_val`
+    cd $dir_name
+}
+
 # you know you've spent too much time in VMS when...
 alias edit="vi"
 alias copy="cp"

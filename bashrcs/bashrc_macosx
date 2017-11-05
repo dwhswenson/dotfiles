@@ -11,6 +11,12 @@ alias svndiff="svn diff --diff-cmd fmdiff"
 alias f77="gfortran"
 #alias sage="/Applications/Sage-6.9.app/Contents/Resources/sage/sage"
 
+function pstat2png
+{
+    name=`basename $1`
+    gprof2dot -f pstats $1 | dot -Tpng -o ${name}.png && open ${name}.png
+}
+
 export FC=gfortran
 
 # note: the single quotes are very necessary here. With double quotes, `pwd`
