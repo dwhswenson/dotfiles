@@ -3,7 +3,7 @@
 	name = David W.H. Swenson
 	signingkey = 0AFE1F56
 [core]
-	excludesfile = /Users/dwhs/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [push]
 	default = simple
 [filter "media"]

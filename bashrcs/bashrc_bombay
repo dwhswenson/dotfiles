@@ -1,0 +1,8 @@
+export UNISONLOCALHOSTNAME=${HOSTNAME%%.*}
+
+export LS_COLOR_OPT="--color"
+
+alias gpustat="nvidia-smi"
+
+export PATH="$HOME/miniconda2/bin:$PATH"
+source ~/.bashrcs/bashrc_dwhs
