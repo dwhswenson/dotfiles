@@ -26,6 +26,8 @@ port install git +bash_completion +svn +credential_osxkeychain +doc +pcre +perl5
 port install cmake
 port install gdb
 port install cloc
+port install clang-3.9  # needed for openmp, which isn't default with macOS
+port install libomp  # OpenMP; needed for mdtraj
 
 # TeX install stuff
 port install texlive +medium +doc

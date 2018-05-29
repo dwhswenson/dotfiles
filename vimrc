@@ -37,6 +37,7 @@ Plugin 'Valloric/YouCompleteMe' " auto-complete
 Plugin 'tmhedberg/SimpylFold' " Python syntax-level folding
 "Plugin 'JarrodCTaylor/vim-python-test-runner' " nose tests
 Plugin 'dwhswenson/vim-python-test-runner' " nose tests (my fork)
+Plugin 'alfredodeza/pytest.vim'  " pytest instead
 Plugin 'scrooloose/syntastic' " Syntax checking (made vim very slow)
 
 "Plugin 'gerw/vim-latex-suite' " latex (consider forking my own?)
@@ -82,6 +83,12 @@ let g:nosetests_options = "-v -s --cover-erase --cover-html"
 :nnoremap <Leader>tgv :ToggleNosetestsVerbose <CR>
 :nnoremap <Leader>tgs :ToggleNosetestsCaptureStdout <CR>
 :nnoremap <Leader>tgc :ToggleNosetestsCoverage <CR>
+
+" override with pytest
+:nnoremap <Leader>tf :Pytest file <CR>
+:nnoremap <Leader>tc :Pytest class <CR>
+:nnoremap <Leader>tt :Pytest method <CR>
+:nnoremap <Leader>tm :Pytest function <CR>
 
 
  
