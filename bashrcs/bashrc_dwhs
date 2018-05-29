@@ -38,6 +38,8 @@ alias cd..="cd .."
 alias lo="exit"     # 'lo' as in 'logout'. You have no idea how nice this is
 alias pingg="ping google.com"  # regularly used in checking connectivity
 
+alias pytest="py.test"
+
 # cloc is a script to Count Lines Of Code (in my ~/.scripts/ directory) 
 # somebody else wrote it, but I use it to gauge how much coding I've done
 # (cloc should be aliased to ~/bin/

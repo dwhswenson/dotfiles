@@ -44,3 +44,22 @@
 6. Copy `.ssh` over
 
 7. Install dev versions of software (openpathsampling, etc.)
+
+
+### Directory structure
+
+```
+$HOME/
+  dotfiles/
+  installed/
+    (source packages for installed things; e.g. GSL)
+  src/
+    openpathsampling/
+    openmmtools/
+    ipynb-test/
+    ...
+  projects/
+```
+
+with subdirectories of `projects/` often having symlinks to the main
+directory

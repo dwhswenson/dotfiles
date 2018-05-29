@@ -53,6 +53,7 @@ pip install gprof2dot
 pip install nglview # ipython notebook trajectory visualization
 pip install ujson # fast json library used by OPS
 pip install thefuck
+pip install moviepy # combine with nglview for movie making
 
 
 # set up secondary ipynb kernel
