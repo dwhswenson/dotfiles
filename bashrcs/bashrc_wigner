@@ -6,6 +6,8 @@ source ~/.bashrcs/bashrc_macosx
 source ~/.bashrcs/bashrc_dynamiq
 export LOCAL_APPLICATIONS="/Applications"
 
+test -f ~/amber16/amber.sh && source ~/amber16/amber.sh
+
 #export SCHRODINGER="/opt/schrodinger2012"
 
 alias unison="unison -ui text"
@@ -15,6 +17,7 @@ alias unison="unison -ui text"
 export DYNAMIQ_BASEDIR="/Users/dwhs/Documents/research/md"
 
 # TODO: update with symlink instead?
+#VMDCMD="'/Applications/VMD 1.9.2.app/Contents/MacOS/'"
 VMDCMD="vmd_command"
 
 # TODO: outdated?

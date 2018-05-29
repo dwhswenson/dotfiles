@@ -2,6 +2,7 @@
 
 - link:
     ~/.bashrcs: bashrcs/
+    ~/.ctags: ctags
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.gnuplot: gnuplot

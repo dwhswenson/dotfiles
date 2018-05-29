@@ -13,7 +13,7 @@ done
 osascript <<ENDSCRIPT
   tell application "iTerm"
     activate
-    set myterm to (make new terminal)
+    set myterm to (create new window with default profile)
     tell myterm
         -- optional part to set size of the terminal window
         set number of columns to 80

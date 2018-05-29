@@ -96,3 +96,6 @@ source ~/.bashrc
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 bindkey -v
 bindkey "^?" backward-delete-char
+
+# added by travis gem
+[ -f /Users/dwhs/.travis/travis.sh ] && source /Users/dwhs/.travis/travis.sh
