@@ -2,7 +2,7 @@
 
 1. Install `conda`:
 
-        MINICONDA=Miniconda2-latest-Linux-x86_64.sh
+        MINICONDA=Miniconda3-latest-Linux-x86_64.sh
         MINICONDA_MD5=$(curl -s https://repo.continuum.io/miniconda/ | grep -A3 $MINICONDA | sed -n '4p' | sed -n 's/ *<td>\(.*\)<\/td> */\1/p')
         wget https://repo.continuum.io/miniconda/$MINICONDA
         if [[ $MINICONDA_MD5 != $(md5sum $MINICONDA | cut -d ' ' -f 1) ]]; then
@@ -41,7 +41,8 @@
         cd ~/.vim/bundle/YouCompleteMe
         ./install.py --clang-completer
 
-6. Copy `.ssh` over
+6. Copy `.ssh` over. If server, create keys on local server and use
+   ssh-copy-id to copy make it reachable.
 
 7. Install dev versions of software (openpathsampling, etc.)
 
