@@ -2,6 +2,10 @@
 
 1. Install `conda`:
 
+        CONDA_PY="3.7" curl https://raw.githubusercontent.com/openpathsampling/openpathsampling/master/devtools/ci/miniconda_install.sh | bash
+
+   If that doesn't do it, the longer version should work:
+
         MINICONDA=Miniconda3-latest-Linux-x86_64.sh
         MINICONDA_MD5=$(curl -s https://repo.continuum.io/miniconda/ | grep -A3 $MINICONDA | sed -n '4p' | sed -n 's/ *<td>\(.*\)<\/td> */\1/p')
         wget https://repo.continuum.io/miniconda/$MINICONDA
@@ -19,7 +23,7 @@
 
 2. Install things from conda:
 
-        conda install git cmake gcc openpathsampling
+        conda install git cmake gcc conda
 
 3. Set up dotfiles:
 
@@ -41,10 +45,22 @@
         cd ~/.vim/bundle/YouCompleteMe
         ./install.py --clang-completer
 
-6. Copy `.ssh` over. If server, create keys on local server and use
-   ssh-copy-id to copy make it reachable.
+6. Copy `.ssh` over. If server, create keys on local machine and use
+   `ssh-copy-id` to copy make it reachable.
 
-7. Install dev versions of software (openpathsampling, etc.)
+
+7. Install dev version of OPS from my fork, with other forks as remotes
+
+        mkdir src
+        pushd src
+        git clone git@github.com:dwhswenson/openpathsampling.git
+        cd openpathsampling
+        git remote add upstream https://github.com/openpathsampling/openpathsampling.git
+        git remote add jhp https://github.com/jhprinz/openpathsampling.git
+        python devtools/install_recipe_requirements.py devtools/conda-recipe/meta.yaml
+        pip install -e .
+
+8. Install dev versions of other software
 
 
 ### Directory structure

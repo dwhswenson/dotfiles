@@ -89,6 +89,7 @@ let g:nosetests_options = "-v -s --cover-erase --cover-html"
 :nnoremap <Leader>tc :Pytest class <CR>
 :nnoremap <Leader>tt :Pytest method <CR>
 :nnoremap <Leader>tm :Pytest function <CR>
+:nnoremap <Leader>ts :Pytest session <CR>
 
 
  

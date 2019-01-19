@@ -9,6 +9,9 @@ export LOCAL_APPLICATIONS="/Applications"
 export DYNAMIQ_BASEDIR=~/research/md
 alias unison="unison -ui text" # may be needed for all Mac OS X soon
 
+export X3DNA="$HOME/x3dna-v2.3"
+export PATH="$HOME/x3dna-v2.3/bin":$PATH
+
 # MultiMarkdown
 #alias multimarkdown="$HOME/Library/Application\ Support/MultiMarkdown/bin/MultiMarkdown.pl"
 
