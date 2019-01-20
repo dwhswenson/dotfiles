@@ -60,7 +60,7 @@ let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": [], "passive
 
 " apparently ycm is very particular about which python to use
 "let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-let g:ycm_path_to_python_interpreter = '/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/python2'
+"let g:ycm_path_to_python_interpreter = '/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/python2'
 let g:ycm_auto_trigger = 1
 let g:ycm_min_num_chars_for_completion = 3
 let g:ycm_min_num_identifier_candidate_chars = 5

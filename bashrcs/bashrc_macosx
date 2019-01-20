@@ -63,6 +63,8 @@ MACPORTS_PATH=$MACPORTS_PATH:/opt/local/lib/gromacs/bin
 export PATH=$MACPORTS_PATH:$PATH
 export MANPATH=$MANPATH:/opt/local/man
 
+export PATH=/usr/local/bin:$PATH  # again, putting this in front
+
 alias restart-pboard="launchctl stop com.apple.pboard && launchctl start com.apple.pboard"
 alias services-rebuild="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
 

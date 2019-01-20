@@ -1,0 +1,14 @@
+google-chrome
+dropbox
+quicksilver
+iterm2
+font-source-code-pro
+omnifocus
+omnigraffle
+adium
+flux
+papers
+omniplan
+sage
+
+aquaterm

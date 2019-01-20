@@ -12,6 +12,12 @@ alias unison="unison -ui text" # may be needed for all Mac OS X soon
 export X3DNA="$HOME/x3dna-v2.3"
 export PATH="$HOME/x3dna-v2.3/bin":$PATH
 
+# need a way to switch betweem clang and gcc
+#export CC=/usr/local/opt/llvm/bin/clang
+#export CXX=/usr/local/opt/llvm/bin/clang++
+#export CPPFLAGS="-I/usr/local/opt/llvm/include/c++/v1"
+#export LDFLAGS="-L/usr/local/opt/llvm/lib"
+
 # MultiMarkdown
 #alias multimarkdown="$HOME/Library/Application\ Support/MultiMarkdown/bin/MultiMarkdown.pl"
 

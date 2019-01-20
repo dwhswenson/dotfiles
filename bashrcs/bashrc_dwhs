@@ -111,7 +111,7 @@ alias edit="vi"
 alias copy="cp"
 
 # random places we hide programs
-export PATH=$PATH:/usr/local/bin:~/.scripts:$HOME/bin
+export PATH=$PATH:~/.scripts:$HOME/bin
 
 export GNUPLOT_LIB=$GNUPLOT_LIB:~/.gnuplotd
 # officially set up for gdb, but might be useful elsewhere:
@@ -121,3 +121,8 @@ if [ $SHELL = "bash" ]
 then
   source ~/.scripts/git-completion.bash
 fi
+
+. ~/miniconda3/etc/profile.d/conda.sh
+conda activate
+conda activate dev
+#export PATH=~/miniconda3/bin:$PATH

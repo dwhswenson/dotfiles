@@ -1,0 +1,49 @@
+# core things that I use every day
+vim
+git
+zsh
+
+# compiling and debugging
+cmake
+gdb
+# TODO: gdb will need to be code-signed
+
+# ctags and cscope for browsing code in vim
+ctags
+cscope
+
+# compiling dynamiq
+bison flex
+llvm  # use a more recent clang
+# TODO: bison and flex may need special treatment
+gsl
+open-mpi
+libomp
+
+# gnu versions of awk and sed for analysis
+gawk
+gnu-sed  # as gsed
+
+cloc
+
+ffmpeg
+
+# latex?
+
+# compression utilities
+gzip p7zip
+
+imagemagick
+
+# plotting
+grace
+
+htop glances
+wget
+lynx
+
+gromacs
+
+octave
+r
+# TODO: julia
