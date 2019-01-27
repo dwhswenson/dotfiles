@@ -35,6 +35,8 @@ gzip p7zip
 
 imagemagick
 
+pandoc
+
 # plotting
 grace
 

@@ -1,5 +1,9 @@
 # $HOME/.bashrcs/bashrc_dwhs
 
+. ~/miniconda3/etc/profile.d/conda.sh
+conda activate
+conda activate dev
+
 # ls has different color behavior on different system; on most systems I
 # want to use the -G option. If it is different for a specific computer, I
 # set LS_COLOR_OPT in that computer's bashrc
@@ -122,7 +126,4 @@ then
   source ~/.scripts/git-completion.bash
 fi
 
-. ~/miniconda3/etc/profile.d/conda.sh
-conda activate
-conda activate dev
 #export PATH=~/miniconda3/bin:$PATH

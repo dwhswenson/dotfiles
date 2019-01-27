@@ -2,7 +2,6 @@ google-chrome
 dropbox
 quicksilver
 iterm2
-font-source-code-pro
 omnifocus
 omnigraffle
 adium
@@ -12,3 +11,4 @@ omniplan
 sage
 
 aquaterm
+mactex

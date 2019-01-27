@@ -11,10 +11,15 @@ copy-pasting the following script:
         # install brew (http://brew.sh)
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew tap caskroom/cask
+        brew tap homebrew/cask-fonts
+        ./strip_comments brew_cask_fonts.txt | xargs brew cask install
         ./strip_comments brew_cask_installs.txt | xargs brew cask install
         ./strip_comments brew_installs.txt | xargs brew install
 
         # clean up brew stuff
+        ## octave installs gnuplot without aquaterm support
+        brew uninstall --ignore-dependencies gnuplot
+        brew install gnuplot --with-aquaterm --with-x11 --with-qt
 
         # install conda
         OS_ARCH=MacOSX-x86_64

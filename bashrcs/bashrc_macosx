@@ -60,7 +60,7 @@ MACPORTS_PATH=$MACPORTS_PATH:/opt/local/Library/Frameworks/Python.framework/Vers
 # fucking Gromacs in MacPorts
 MACPORTS_PATH=$MACPORTS_PATH:/opt/local/lib/gromacs/bin
 
-export PATH=$MACPORTS_PATH:$PATH
+export PATH=$PATH:$MACPORTS_PATH
 export MANPATH=$MANPATH:/opt/local/man
 
 export PATH=/usr/local/bin:$PATH  # again, putting this in front
@@ -71,6 +71,6 @@ alias services-rebuild="/System/Library/Frameworks/CoreServices.framework/Framew
 #alias maxima="${LOCAL_APPLICATIONS}/Maxima.app/Contents/Resources/bin/maxima"
 #alias ffmpeg="/Applications/ffmpegX.app/Contents/Resources/ffmpeg"
 
-VIRTUALENVWRAPPER_PYTHON=/opt/local/bin/python
-export WORKON_HOME=$HOME/Dropbox/virtualenv
-source /opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/virtualenvwrapper.sh
+#VIRTUALENVWRAPPER_PYTHON=/opt/local/bin/python
+#export WORKON_HOME=$HOME/Dropbox/virtualenv
+#source /opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/virtualenvwrapper.sh

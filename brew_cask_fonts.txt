@@ -1,0 +1,3 @@
+font-source-code-pro
+font-profont-nerd-font-mono
+
