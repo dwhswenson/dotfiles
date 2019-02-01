@@ -1,0 +1,8 @@
+# tlmgr --usermode init-usertree
+# ./strip_comments latex_install.txt | xargs tlmgr --usermode install
+
+# moderncv  # TODO: make fix for me changes
+natbib
+soul
+etoolbox
+revtex
