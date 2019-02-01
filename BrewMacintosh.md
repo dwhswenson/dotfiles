@@ -21,11 +21,25 @@ copy-pasting the following script:
         brew uninstall --ignore-dependencies gnuplot
         brew install gnuplot --with-aquaterm --with-x11 --with-qt
 
+        # NOTE: from here down will be platform-independent
+        # get zsh set up
+        sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+        mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc # RESPECT MY ZSHRC, OMZ!
+        sudo chsh -s /usr/local/bin/zsh dwhs # or whatever my username is
+
+        # set up Vundle plugings in vim
+        vim "+PluginInstall" "+q" "+q"
+        pushd ~/.vim/bundle/YouCompleteMe
+        ./install.py --clang-completer
+        popd
+
+
         # install conda
         OS_ARCH=MacOSX-x86_64
         source miniconda_install.sh
         conda config --add channels omnia
         conda config --add channels conda-forge
+        # TODO: add conda envs in here
 
 While this is running, go to the App Store and download anything needed from
 there.
