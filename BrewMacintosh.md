@@ -41,5 +41,9 @@ copy-pasting the following script:
         conda config --add channels conda-forge
         # TODO: add conda envs in here
 
+        # install latex things
+        tlmgr --usermode init-usertree
+        ./strip_comments latex_installs.txt | xargs tlmgr --usermode install
+
 While this is running, go to the App Store and download anything needed from
 there.

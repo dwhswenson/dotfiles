@@ -39,6 +39,7 @@ Plugin 'tmhedberg/SimpylFold' " Python syntax-level folding
 Plugin 'dwhswenson/vim-python-test-runner' " nose tests (my fork)
 Plugin 'alfredodeza/pytest.vim'  " pytest instead
 Plugin 'scrooloose/syntastic' " Syntax checking (made vim very slow)
+Plugin 'gabrielelana/vim-markdown'  " better markdown support (incl. jekyll)
 
 "Plugin 'gerw/vim-latex-suite' " latex (consider forking my own?)
 "Plugin 'vim-scripts/a.vim'

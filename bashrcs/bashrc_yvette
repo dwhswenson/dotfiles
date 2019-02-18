@@ -9,9 +9,6 @@ export LOCAL_APPLICATIONS="/Applications"
 export DYNAMIQ_BASEDIR=~/research/md
 alias unison="unison -ui text" # may be needed for all Mac OS X soon
 
-export X3DNA="$HOME/x3dna-v2.3"
-export PATH="$HOME/x3dna-v2.3/bin":$PATH
-
 # need a way to switch betweem clang and gcc
 #export CC=/usr/local/opt/llvm/bin/clang
 #export CXX=/usr/local/opt/llvm/bin/clang++
@@ -37,3 +34,5 @@ alias bible="more $the_archives/Gutenburg/Religion/Bible/bible11.txt"
 alias mplayer="/Applications/MPlayer\ OS\ X\ 2.app/Contents/Resources/mplayer.app/Contents/MacOS/mplayer"
 alias octave="/Applications/Octave.app/Contents/Resources/bin/octave"
 
+export X3DNA="$HOME/x3dna-v2.3"
+export PATH=$PATH:"$X3DNA/bin"

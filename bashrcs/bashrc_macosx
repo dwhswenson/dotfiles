@@ -53,17 +53,22 @@ alias maillog="cat /var/log/mail.log"
 alias x11="open -g -a XQuartz" # post Mountain Lion, need XQuartz, not X11
 alias xssh="open -g -a XQuartz && ssh -X" 
 # fucking MacPorts
-MACPORTS_PATH=/opt/local/bin:/opt/local/sbin
+#MACPORTS_PATH=/opt/local/bin:/opt/local/sbin
 # fucking jupyter: who the hell install themselves here?
-MACPORTS_PATH=$MACPORTS_PATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin
+#MACPORTS_PATH=$MACPORTS_PATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin
 #export LD_LIBRARY_PATH=/opt/local/Library/Frameworks/Python.framework/Versions/Current/lib:/opt/local/lib:$LD_LIBRARY_PATH
 # fucking Gromacs in MacPorts
-MACPORTS_PATH=$MACPORTS_PATH:/opt/local/lib/gromacs/bin
+#MACPORTS_PATH=$MACPORTS_PATH:/opt/local/lib/gromacs/bin
 
-export PATH=$PATH:$MACPORTS_PATH
-export MANPATH=$MANPATH:/opt/local/man
+#export PATH=$PATH:$MACPORTS_PATH
+#export MANPATH=$MANPATH:/opt/local/man
 
-export PATH=/usr/local/bin:/usr/local/opt/ruby/bin:$PATH  # again, putting this in front
+# brew stuff
+#export PATH=/usr/local/opt/ruby/bin:$PATH  # again, putting this in front
+## use rbenv for ruby
+export PATH=~/.rbenv/bin:$PATH
+eval "$(rbenv init -)"
+
 
 alias restart-pboard="launchctl stop com.apple.pboard && launchctl start com.apple.pboard"
 alias services-rebuild="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"

@@ -2,7 +2,7 @@
 
 . ~/miniconda3/etc/profile.d/conda.sh
 conda activate
-conda activate dev
+conda activate --stack dev
 
 # ls has different color behavior on different system; on most systems I
 # want to use the -G option. If it is different for a specific computer, I
