@@ -13,3 +13,4 @@ sage
 aquaterm
 mactex
 qt-creator
+xquartz

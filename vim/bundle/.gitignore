@@ -5,3 +5,4 @@ tagbar
 vim-python-test-runner
 syntastic
 pytest.vim
+vim-markdown
