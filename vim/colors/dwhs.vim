@@ -32,7 +32,8 @@ hi Search       ctermfg=Black	ctermbg=Red	cterm=NONE
 hi Visual					cterm=reverse
 hi Special      ctermfg=DarkMagenta             cterm=NONE
 hi PreProc      ctermfg=DarkMagenta             cterm=NONE
-hi Comment      ctermfg=DarkBlue                cterm=NONE
+"hi Comment      ctermfg=DarkBlue                cterm=NONE
+hi Comment      ctermfg=33                cterm=NONE
 hi StatusLine   ctermfg=White	ctermbg=Black
 hi StatusLineNC ctermfg=Black   ctermbg=White   cterm=bold
 hi Statement    ctermfg=Yellow   cterm=NONE term=NONE

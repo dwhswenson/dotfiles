@@ -35,6 +35,7 @@ alias scp="scp -r"
 #a few of my favorite typos/shortcuts
 alias gca="git commit -v -S -a"
 alias gc="git commit -v -S"
+alias gb="git branch --sort=committerdate"
 alias ipynb="jupyter notebook"
 alias ipy="ipython"
 alias ls-l="ls -F -l"
