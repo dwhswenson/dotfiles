@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+import argparse
+import math
+
+def c_to_f(t_c):
+    return 9.0 / 5.0 * t_c + 32
+
+def f_to_c(t_f):
+    return 5.0 / 9.0 * (t_f - 32)
+
+
+
+def heat_index(T, H):
+    if T <= 40:
+        return T
+    A = -10.3 + 1.1 * T + 0.047 * H
+    if A < 79:
+        return A
+    B = (-42.397 + 2.04901523 * T + 10.14333127 * H
+         - 0.22475541 * T*H - 6.83783e-3 * T*T
+         - 5.481717e-2 * H*H + 1.22874e-3 * T*T*H
+         + 8.5282e-4 * T*H*H - 1.99e-6 * T*T*H*H)
+    if H <= 13 and 80 <= T <= 112:
+        return B - ((13 - H)/4
+                    * math.sqrt(17 - math.abs(T - 95) / 17))
+    if H > 85 and 80 <= T <= 87:
+        return B + 0.02 * (H - 85) * (87 - T)
+    return B
+
+def make_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-t', '--temperature', type=float)
+    parser.add_argument('-r', '--relative-humidity', type=float)
+    return parser
+
+if __name__ == "__main__":
+    parser = make_parser()
+    opts = parser.parse_args()
+    t_f = c_to_f(opts.temperature)
+    hi = heat_index(t_f, opts.relative_humidity)
+    print(f_to_c(hi))
