@@ -5,6 +5,8 @@ export ZSH=/Users/dwhs/.oh-my-zsh
 alias cbio_mount="sshfs hal:/cbio ~/local_cbio -ovolname=cbio"
 alias cbio_unmount="umount /Users/dwhs/local_cbio"
 
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
 bindkey -v
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/

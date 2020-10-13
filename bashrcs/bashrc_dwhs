@@ -4,6 +4,8 @@
 conda activate
 conda activate --stack dev
 
+#. ~/.openpathsampling/openpathsampling_complete.zsh
+
 # ls has different color behavior on different system; on most systems I
 # want to use the -G option. If it is different for a specific computer, I
 # set LS_COLOR_OPT in that computer's bashrc
