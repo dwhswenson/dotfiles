@@ -1,9 +1,5 @@
 # $HOME/.bashrcs/bashrc_dwhs
 
-. ~/miniconda3/etc/profile.d/conda.sh
-conda activate
-conda activate --stack dev
-
 # ls has different color behavior on different system; on most systems I
 # want to use the -G option. If it is different for a specific computer, I
 # set LS_COLOR_OPT in that computer's bashrc
@@ -68,6 +64,18 @@ alias yesterday="date -v -1d +%Y%m%d"
 # at some point, turn this into a function such that we can call:
 #  `today`   `today -1`  `today -1m` .... etc
 alias nextmon="date -v+1d -v+Mon +%Y%m%d" # weekly Monday meetings
+
+# GPG
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+  . "${HOME}/.gpg-agent-info"
+  export GPG_AGENT_INFO
+  export SSH_AUTH_SOCK
+  export SSH_AGENT_PID
+fi
+
+GPG_TTY=$(tty)
+export GPG_TTY
+
 
 
 

@@ -2,6 +2,11 @@
 
 ### Install Miniconda
 
+if [ -z "$MINICONDA_ROOT" ]
+then
+    MINICONDA_ROOT=$HOME
+fi
+
 if [ -z "$CONDA_PY" ]
 then
     CONDA_PY=3.7
@@ -32,9 +37,9 @@ if [[ $MINICONDA_MD5 != $SCRIPT_MD5 ]]; then
     echo "Found: $SCRIPT_MD5"
     exit 1
 fi
-bash $MINICONDA -b -p $HOME/miniconda${pyV}
+bash $MINICONDA -b -p ${MINICONDA_ROOT}/miniconda
 
-export PATH=$HOME/miniconda${pyV}/bin:$PATH
+export PATH=${MINICONDA_ROOT}/miniconda/bin:$PATH
 
 conda update --yes conda
 rm -f $MINICONDA

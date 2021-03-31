@@ -1,3 +1,4 @@
+# bashrc for bombay*.science.uva.nl
 export UNISONLOCALHOSTNAME=${HOSTNAME%%.*}
 
 export LS_COLOR_OPT="--color"
