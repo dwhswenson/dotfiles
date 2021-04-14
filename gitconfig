@@ -11,3 +11,5 @@
 	smudge = git-media-smudge %f
 [pager]
 	branch = false
+[pull]
+	rebase = false

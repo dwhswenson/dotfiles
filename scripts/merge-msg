@@ -14,8 +14,8 @@ TIME = "%H:%M"
 
 MSG = (
     "This is ready for review and comment. "
-    "I'll leave it up for at least {hours} hours. "
-    "Will merge no earlier than {datestring}."
+    "I will leave it open for at least {hours} hours, "
+    "merging no earlier than {datestring}."
 )
 
 
@@ -28,7 +28,7 @@ def main(hours):
     delta = timedelta(hours=hours)
     result_utc = round_up + delta
     result_local = result_utc.astimezone()
-    datestring = "{local_date} {local_time} ({utc_time} GMT)".format(
+    datestring = "{local_date} {utc_time} GMT ({local_time} local)".format(
         local_date=result_local.strftime(DATE),
         local_time=result_local.strftime(TIME),
         utc_time=result_utc.strftime(TIME)
