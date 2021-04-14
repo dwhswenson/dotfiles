@@ -1,0 +1,2 @@
+. ${MINICONDA_ROOT}/etc/profile.d/conda.sh
+conda activate

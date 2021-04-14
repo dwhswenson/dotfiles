@@ -1,0 +1,26 @@
+# bashrc for machines on the Centre Blaise Pascal network (ENS de Lyon)
+export UNISONLOCALHOSTNAME=${HOSTNAME%%.*}
+
+alias vi="vim"
+
+export LS_COLOR_OPT="--color"
+
+MINICONDA_ROOT="/scratch/dswenson/miniconda"
+source ~/.bashrcs/bashrc_conda
+
+source ~/.bashrcs/bashrc_dwhs
+
+function xx {
+  source ~/configs/$1
+}
+
+declare -A ports=( ["q4000alpha"]='19999' )
+
+PORT="${ports[`hostname`]:-18888}"
+
+alias jlab="jupyter lab --port $PORT --no-browser"
+alias scanner="python ~/scanner/scanner.py --config ~/scanner/scanner.ini"
+
+if [ "$SSH_KEY_ENV" == "covid" ]; then
+    xx covid
+fi
