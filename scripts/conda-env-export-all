@@ -1,0 +1,59 @@
+#!/usr/bin/env python
+
+# conda-env-export-all
+# Export all conda environments. Two copies of each environment is exported:
+#
+# 1. ${ENVIRONMENT}_full.yml : `conda export -p $PREFIX`
+# 2. ${ENVIRONMENT}.yml : `conda export -p $PREFIX --from-history`
+#
+# Environment name is inferred from the prefix
+
+# 1. get the list of prefixes
+# 2. parse the prefixes; return as pairs of env_name prefix
+
+import json
+import os
+from subprocess import run
+import subprocess
+import shlex
+from collections import namedtuple
+
+Command = namedtuple("Command", ['command', 'filename'])
+
+LIST_ENVS = Command("conda env list --json", None)
+FULL_EXPORT = Command("conda env export -p {prefix}",
+                      "{basedir}/{env}_full.yml")
+REQ_EXPORT = Command("conda env export -p {prefix} --from-history",
+                     "{basedir}/{env}.yml")
+CONDA_LIST = Command("conda list -p {prefix}", "{basedir}/{env}.txt")
+
+def run_command(command, basedir, prefix, env):
+    cmd = command.command.format(basedir=basedir, prefix=prefix, env=env)
+    print(cmd)
+    proc = subprocess.run(shlex.split(cmd), capture_output=True)
+    if command.filename is not None:
+        filename = command.filename.format(basedir=basedir, prefix=prefix,
+                                           env=env)
+        with open(filename, mode='wb') as f:
+            f.write(proc.stdout)
+    return proc.stdout
+    
+def get_name(prefix):
+    _, name = prefix.split('/envs/')
+    name = name.replace('/', '.')
+    return name
+
+json_str = run_command(LIST_ENVS, None, None, None)
+envs = json.loads(json_str)['envs']
+
+# normalize base
+base = sorted(envs, key=len)[0]
+idx_base = envs.index(base)
+envs[idx_base] += "/envs/base"
+env_dict = {get_name(prefix): prefix for prefix in envs}
+env_dict['base'] = base
+for env_name, prefix in env_dict.items():
+    basedir = "/Users/dwhs/conda_backup"
+    os.makedirs(basedir, exist_ok=True)
+    for command in [FULL_EXPORT, REQ_EXPORT, CONDA_LIST]:
+        run_command(command, basedir, prefix, env_name)
