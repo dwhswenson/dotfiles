@@ -19,6 +19,10 @@ alias sssh="ssh -o 'PubkeyAuthentication=no'"
 alias gittyup="git fetch upstream && git merge -S upstream/master && git push"
 export GITHUBUSER="dwhswenson"
 
+function xx {
+  source $HOME/.envconfigs/${UNISONLOCALHOSTNAME}/$1
+}
+
 eval "$(thefuck --alias)"
 
 # how I think a few commands SHOULD work by default
@@ -34,6 +38,7 @@ alias gc="git commit -v -S"
 alias gb="git branch --sort=committerdate"
 alias ipynb="jupyter notebook"
 alias ipy="ipython"
+alias jlab="jupyter lab"
 alias ls-l="ls -F -l"
 alias cd..="cd .."
 alias lo="exit"     # 'lo' as in 'logout'. You have no idea how nice this is
@@ -76,9 +81,6 @@ fi
 
 GPG_TTY=$(tty)
 export GPG_TTY
-
-
-
 
 # everybody's got an mkcd function, right? There are probably better
 # implementations out there

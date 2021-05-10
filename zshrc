@@ -101,3 +101,5 @@ bindkey "^?" backward-delete-char
 
 # added by travis gem
 [ -f /Users/dwhs/.travis/travis.sh ] && source /Users/dwhs/.travis/travis.sh
+
+eval $(thefuck --alias)

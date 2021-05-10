@@ -36,7 +36,7 @@ export DISPLAY=":0" # req'd for gnuplot in Mountain Lion
 
 export MPICC=mpicc
 
-alias aprun="mpirun"
+#alias aprun="mpirun"
 alias memcheck="valgrind --tool=memcheck --leak-check=full --dsymutil=yes --track-origins=yes"
 
 # VMDCMD needs to be set bashrc_HOSTNAME
@@ -45,11 +45,11 @@ alias vvmd='command "${VMDCMD}"'
 alias xvmd='xtermrun "${VMDCMD}"'
 
 # Mac specific
-alias apachestart="sudo /Library/Apache2/bin/apachectl graceful"
-alias comp="opendiff"
+#alias apachestart="sudo /Library/Apache2/bin/apachectl graceful"
+#alias comp="opendiff"
 alias open.="open ."
 alias xcode="open -a XCode"
-alias maillog="cat /var/log/mail.log"
+#alias maillog="cat /var/log/mail.log"
 alias x11="open -g -a XQuartz" # post Mountain Lion, need XQuartz, not X11
 alias xssh="open -g -a XQuartz && ssh -X" 
 # fucking MacPorts
@@ -67,7 +67,10 @@ alias xssh="open -g -a XQuartz && ssh -X"
 #export PATH=/usr/local/opt/ruby/bin:$PATH  # again, putting this in front
 ## use rbenv for ruby
 export PATH=~/.rbenv/bin:$PATH
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
+eval "$(rbenv init --no-rehash -)"
+#(rbenv rehash &) 2> /dev/null
+
 
 
 alias restart-pboard="launchctl stop com.apple.pboard && launchctl start com.apple.pboard"

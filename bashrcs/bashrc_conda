@@ -1,2 +1,9 @@
+# this ensures that I'm using base conda executable even if I have conda
+# installed in the environment
+# currently I manually set MINICONDA_ROOT; I think I can do:
+# MINICONDA_ROOT=$(conda info --base)
 . ${MINICONDA_ROOT}/etc/profile.d/conda.sh
+
+alias cca="source ~/.scripts/conda-create-activate.sh"
+
 conda activate
