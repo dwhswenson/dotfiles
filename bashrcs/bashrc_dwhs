@@ -19,8 +19,11 @@ alias sssh="ssh -o 'PubkeyAuthentication=no'"
 alias gittyup="git fetch upstream && git merge -S upstream/master && git push"
 export GITHUBUSER="dwhswenson"
 
-function xx {
-  source $HOME/.envconfigs/${UNISONLOCALHOSTNAME}/$1
+export XXDIR="$HOME/.envconfigs/${UNISONLOCALHOSTNAME}"
+source ~/.bashrcs/xx.sh
+alias cd="xxcd"
+function xxrun {
+    echo "conda activate $CONDA_DEFAULT_ENV" > .xxrun
 }
 
 eval "$(thefuck --alias)"

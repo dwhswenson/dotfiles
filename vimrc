@@ -33,7 +33,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'majutsushi/tagbar'
 
-"Plugin 'Valloric/YouCompleteMe' " auto-complete
+Plugin 'Valloric/YouCompleteMe' " auto-complete
 Plugin 'tmhedberg/SimpylFold' " Python syntax-level folding
 "Plugin 'JarrodCTaylor/vim-python-test-runner' " nose tests
 Plugin 'dwhswenson/vim-python-test-runner' " nose tests (my fork)

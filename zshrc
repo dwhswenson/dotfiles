@@ -1,12 +1,10 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/dwhs/.oh-my-zsh
 
-
 alias cbio_mount="sshfs hal:/cbio ~/local_cbio -ovolname=cbio"
 alias cbio_unmount="umount /Users/dwhs/local_cbio"
-
+# TODO: this brew --prefix call is slow
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-
 bindkey -v
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -64,7 +62,6 @@ plugins=(git)
 #export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/local/lib/gromacs/bin:/usr/local/bin:/Users/dwhs/bin:/usr/local/scripts/:/Users/dwhs/.scripts:/Users/dwhs/bin"
 #export PATH="/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 #
 # TODO: clean this up to separate bash and zsh stuff

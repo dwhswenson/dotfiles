@@ -5,7 +5,6 @@ export UNISONLOCALHOSTNAME="Yvette"
 
 MINICONDA_ROOT="${HOME}/miniconda3"
 source ${HOME}/.bashrcs/bashrc_conda
-conda activate --stack dev
 
 source ${HOME}/.bashrcs/bashrc_macosx
 

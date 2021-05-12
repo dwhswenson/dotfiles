@@ -3,7 +3,6 @@
 # currently I manually set MINICONDA_ROOT; I think I can do:
 # MINICONDA_ROOT=$(conda info --base)
 . ${MINICONDA_ROOT}/etc/profile.d/conda.sh
+conda activate
 
 alias cca="source ~/.scripts/conda-create-activate.sh"
-
-conda activate
