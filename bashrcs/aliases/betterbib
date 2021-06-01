@@ -1,0 +1,11 @@
+# NOTE: betterbib requires enchant to be installed separately, e.g., `brew
+# install enchant`  https://pyenchant.github.io/pyenchant/install.html
+# pyenchant is installed via pip; the rest is installed via conda-forge
+#
+
+alias betterbib-dedup-doi="conda run -n betterbib betterbib-dedup-doi"
+alias betterbib-format="conda run -n betterbib betterbib-format"
+alias betterbib-journal-abbrev="conda run -n betterbib betterbib-journal-abbrev"
+alias betterbib-sync="conda run -n betterbib betterbib-sync"
+alias betterbib-doi2bibtex="conda run -n betterbib betterbib-doi2bibtex"
+

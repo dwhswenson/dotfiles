@@ -1,6 +1,12 @@
-#!/bin/bash
-
-# In .xxrun files in any directory, add any environment configuration 
+# In .xxrun files in any directory, add any environment configuration
+# specific to that directory and subdirectories.
+#
+# In XXDIR, add any session-wide environment configs (and sometimes a cd to
+# the appropriate directory).
+#
+# Enable by sourcing this file. Add automatic support on cd by aliasing cd
+# to xxcd. Disable within a session by setting XXENABLED to something other
+# than 1.
 
 if [ -z "$XXDIR" ]; then
     export XXDIR=${HOME}/.xxconfigs

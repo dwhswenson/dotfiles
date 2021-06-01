@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# use mambda if it is available
+if command -v mamba &> /dev/null; then
+    _CONDA=mamba
+else
+    _CONDA=conda
+fi
+
+ENV_NAME=$1
+
+if [ "$2" == "" ]; then
+    CONFIG=~/dotfiles/dev-installs.yml
+else
+    CONFIG=$2
+fi
+
+$_CONDA env create -n $ENV_NAME -f $ENV_NAME.yml
+TXTFILE=${ENV_NAME}.txt
+if [ -f $TXTFILE ]; then
+    dev-install -e $ENV_NAME -c $CONFIG $TXTFILE
+fi

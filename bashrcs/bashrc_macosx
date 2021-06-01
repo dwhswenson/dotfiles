@@ -5,6 +5,8 @@ source ~/.bashrcs/bashrc_dropbox # Macs should have Dropbox installed
 
 alias callme='say "Hey sexy, come over here"'
 
+alias ql='qlmanage -p'
+
 export SVN_SSH="ssh -q -i $HOME/.ssh/hyperblazer_keys/dwhs_svn"
 
 alias svndiff="svn diff --diff-cmd fmdiff"
@@ -18,6 +20,10 @@ function pstat2png
 }
 
 export FC=gfortran
+
+# this was due to problem building Python extensions
+# see https://github.com/numpy/numpy/issues/17777#issuecomment-754583270
+export AR=/usr/bin/ar
 
 # note: the single quotes are very necessary here. With double quotes, `pwd`
 # gets evaluated at login!

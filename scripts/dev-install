@@ -1,0 +1,113 @@
+#!/usr/bin/env python
+
+import subprocess
+import argparse
+import os
+import sys
+import pathlib
+import yaml
+import warnings
+from string import Template
+from collections import namedtuple
+
+import logging
+logger = logging.getLogger(__file__)
+
+Environment = namedtuple(
+    'Environment', ['prefix', 'python']
+)
+
+def set_stdout_loglevel(level):
+    logger.setLevel(level)
+    ch = logging.StreamHandler()
+    formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+
+def parse_arguments(args=None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument('txt', help='output of conda list')
+    parser.add_argument('-c', '--conf', help='yaml config file')
+    parser.add_argument('-e', '--env', help='environment name', default=None)
+    parser.add_argument('--dry', action='store_true')
+    return parser.parse_args(args)
+
+def parse_env(env):
+    print(env)
+    if env is None:
+        env = os.environ['CONDA_DEFAULT_ENV']
+
+    prefix = subprocess.check_output("conda info --base", shell=True)
+    prefix = pathlib.Path(prefix.decode('utf-8').rstrip()) / 'envs' / env
+    return Environment(prefix=str(prefix),
+                       python=str(prefix / 'bin/python'))
+
+def load_config(config_file, env):
+    with open(config_file, mode='r') as f:
+        template = Template(f.read())
+        as_str = template.safe_substitute({'PYTHON': env.python})
+        yml = yaml.load(as_str, Loader=yaml.FullLoader)
+    return yml
+
+def get_package_configs(yml, env):
+    def _update_key(pkg, key, default, replacements):
+        if key not in pkg:
+            template = Template(default[key])
+            pkg[key] = template.safe_substitute(replacements)
+            
+    defaults = yml['defaults']
+    env_replacements = {
+        'PREFIX': env.prefix,
+        'PYTHON': env.python,
+    }
+    for pkg in yml['packages']:
+        local_replacements = {
+            'NAME': pkg['name'],
+        }
+        replacements = {**env_replacements, **local_replacements}
+        for key in ['directory', 'install']:
+            _update_key(pkg, key, defaults, replacements)
+
+    return {pkg['name']: pkg for pkg in yml['packages']}
+
+def get_packages(txt):
+    with open(txt, mode='r') as f:
+        lines = f.readlines()
+        pkgs = [line.split()[0] for line in lines if "<develop>" in line]
+    return pkgs
+
+def install_package(pkg):
+    print(pkg)
+    path = pathlib.Path(pkg['directory']).expanduser()
+    cwd = os.getcwd()
+    os.chdir(path)
+    result = subprocess.run(pkg['install'], shell=True)
+    if result.returncode != 0:
+        raise RuntimeError("let's try to handle this")
+    os.chdir(cwd)
+
+def dry_run(pkg):
+    print(pkg)
+
+def main():
+    set_stdout_loglevel(logging.INFO)
+    opts = parse_arguments()
+    env = parse_env(opts.env)
+    logger.info(str(env))
+    config = load_config(opts.conf, env)
+    package_configs = get_package_configs(config, env)
+    packages = get_packages(opts.txt)
+
+    install = {True: dry_run, False: install_package}[opts.dry]
+    for pkg in packages:
+        try:
+            config = package_configs[pkg]
+        except KeyError:
+            warnings.warn(f"Can't reinstall package {pkg}")
+        else:
+            print(pkg, config)
+            install(config)
+
+if __name__ == "__main__":
+    main()
+    

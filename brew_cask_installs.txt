@@ -14,3 +14,5 @@ aquaterm
 mactex
 qt-creator
 xquartz
+
+jupyter-notebook-viewer

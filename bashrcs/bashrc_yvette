@@ -5,6 +5,7 @@ export UNISONLOCALHOSTNAME="Yvette"
 
 MINICONDA_ROOT="${HOME}/miniconda3"
 source ${HOME}/.bashrcs/bashrc_conda
+source ${HOME}/.bashrcs/aliases/betterbib
 
 source ${HOME}/.bashrcs/bashrc_macosx
 
@@ -43,3 +44,5 @@ export X3DNA="$HOME/x3dna-v2.3"
 export PATH=$PATH:"$X3DNA/bin"
 
 source ${HOME}/.bashrcs/bashrc_dwhs
+
+
