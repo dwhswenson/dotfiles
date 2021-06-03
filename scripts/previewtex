@@ -1,8 +1,0 @@
-#!/bin/bash
-
-name=$@
-base=`echo "$name" | sed 's/\(.*\)\.tex/\1/'`
-latex ${base}.tex
-dvipdfm ${base}.dvi
-rm -f ${base}.aux ${base}.dvi ${base}.log
-open -a Preview.app ${base}.pdf
