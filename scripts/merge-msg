@@ -28,7 +28,7 @@ def main(hours):
     delta = timedelta(hours=hours)
     result_utc = round_up + delta
     result_local = result_utc.astimezone()
-    datestring = "{local_date} {utc_time} GMT ({local_time} local)".format(
+    datestring = "{local_date} {utc_time} GMT ({local_time} my local)".format(
         local_date=result_local.strftime(DATE),
         local_time=result_local.strftime(TIME),
         utc_time=result_utc.strftime(TIME)
