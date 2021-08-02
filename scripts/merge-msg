@@ -18,20 +18,26 @@ MSG = (
     "merging no earlier than {datestring}."
 )
 
-
 def main(hours):
-    # TODO: this could be made more fancy to handle cases where GMT changes
-    # the day, but as long as I'm in GMT+1/+2, I won't bother
     now = datetime.now(timezone.utc)
     round_down = now.replace(minute=0, second=0, microsecond=0)
     round_up = round_down + timedelta(hours=1)
     delta = timedelta(hours=hours)
     result_utc = round_up + delta
     result_local = result_utc.astimezone()
-    datestring = "{local_date} {utc_time} GMT ({local_time} my local)".format(
-        local_date=result_local.strftime(DATE),
-        local_time=result_local.strftime(TIME),
-        utc_time=result_utc.strftime(TIME)
+    if result_local.day != result_utc.day:
+        LOCAL_DATE = "%a %d %b "
+    else:
+        LOCAL_DATE = ""
+
+    datestring = (
+        "{utc_date} {utc_time} GMT "
+        "({local_date}{local_time} my local)".format(
+            utc_date=result_utc.strftime(DATE),
+            utc_time=result_utc.strftime(TIME),
+            local_date=result_local.strftime(LOCAL_DATE),
+            local_time=result_local.strftime(TIME),
+        )
     )
     print(MSG.format(hours=hours, datestring=datestring))
 
