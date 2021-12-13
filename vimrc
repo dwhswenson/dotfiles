@@ -20,76 +20,103 @@
 
 " Vundle Plugin Manager ======================================================
 set nocompatible              " be iMproved, required
-filetype off                  " required
+"filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" auto-install of vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'majutsushi/tagbar'
+call plug#begin('~/.vim/plugged')
+Plug 'gmarik/Vundle.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'majutsushi/tagbar'
 
-Plugin 'Valloric/YouCompleteMe' " auto-complete
-Plugin 'tmhedberg/SimpylFold' " Python syntax-level folding
-"Plugin 'JarrodCTaylor/vim-python-test-runner' " nose tests
-Plugin 'dwhswenson/vim-python-test-runner' " nose tests (my fork)
-Plugin 'alfredodeza/pytest.vim'  " pytest instead
-Plugin 'scrooloose/syntastic' " Syntax checking (made vim very slow)
-Plugin 'gabrielelana/vim-markdown'  " better markdown support (incl. jekyll)
+"Plug 'Valloric/YouCompleteMe', { 'do': './install.py' } " auto-complete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tmhedberg/SimpylFold' " Python syntax-level folding
+"Plug 'JarrodCTaylor/vim-python-test-runner' " nose tests
+"Plug 'dwhswenson/vim-python-test-runner' " nose tests (my fork)
+Plug 'alfredodeza/pytest.vim'  " pytest instead
+"Plug 'scrooloose/syntastic' " Syntax checking (made vim very slow)
+Plug 'vim-syntastic/syntastic'
+Plug 'gabrielelana/vim-markdown'  " better markdown support (incl. jekyll)
 
-"Plugin 'gerw/vim-latex-suite' " latex (consider forking my own?)
-"Plugin 'vim-scripts/a.vim'
+"Plug 'gerw/vim-latex-suite' " latex (consider forking my own?)
+"Plug 'vim-scripts/a.vim'
 "
-"Plugin 'jgdavey/tslime.vim' " tmux integration
+"Plug 'jgdavey/tslime.vim' " tmux integration
 
 " TODO move old plugins to Vundle support
 " ???pyclewn???
+call plug#end()
+" end vim-plug
 
-call vundle#end()            " required
-" Install with :PluginInstall or `vim +PluginInstall +qall`
-" End Vundle Plugin Manager ===================================================
 
 " starter for NERDCommenter (and others, presumably)
 :let mapleader = ","
 
-"let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": [], "passive_filetypes": [] }
+let g:syntastic_python_checkers = ['pylint', 'flake8']
+" TODO this looks like it'll be machine-specific; any way around that?
+let g:syntastic_shell = '/usr/local/bin/zsh'
+
+" this is how I actually use Syntastic in practice
+noremap <C-s> :write<CR>:SyntasticReset<CR>:SyntasticCheck<CR>
+
+" syntastic recommendation
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
 
 " apparently ycm is very particular about which python to use
 "let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 "let g:ycm_path_to_python_interpreter = '/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/python2'
-let g:ycm_auto_trigger = 1
-let g:ycm_min_num_chars_for_completion = 3
-let g:ycm_min_num_identifier_candidate_chars = 5
-let g:ycm_complete_in_strings = 0
-let g:ycm_key_list_previous_completion = [ '<Up>' ]
-let g:ycm_key_invoke_completion = '<S-TAB>'
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_filetype_blacklist = { 'tagbar' : 1, 'qf' : 1, 'notes' : 1,
-    \ 'markdown' : 1, 'unite' : 1, 'text' : 1, 'vimwiki' : 1, 'pandoc' : 1,
-    \ 'infolog' : 1, 'mail' : 1, 'gitcommit' : 1, 'tex' : 1, 'rst' : 1}
+"let g:ycm_auto_trigger = 1
+"let g:ycm_min_num_chars_for_completion = 3
+"let g:ycm_min_num_identifier_candidate_chars = 5
+"let g:ycm_complete_in_strings = 0
+"let g:ycm_key_list_previous_completion = [ '<Up>' ]
+"let g:ycm_key_invoke_completion = '<S-TAB>'
+"let g:ycm_autoclose_preview_window_after_insertion = 1
+"let g:ycm_filetype_blacklist = { 'tagbar' : 1, 'qf' : 1, 'notes' : 1,
+    "\ 'markdown' : 1, 'unite' : 1, 'text' : 1, 'vimwiki' : 1, 'pandoc' : 1,
+    "\ 'infolog' : 1, 'mail' : 1, 'gitcommit' : 1, 'tex' : 1, 'rst' : 1}
+
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 
 " for TDD with nosetests
-let g:nosetests_options = "-v -s --cover-erase --cover-html"
-:nnoremap <Leader>tf :NosetestFile <CR>
-:nnoremap <Leader>tc :NosetestClass <CR>
-:nnoremap <Leader>tt :NosetestMethod <CR>
-:nnoremap <Leader>tm :NosetestBaseMethod <CR>
+"let g:nosetests_options = "-v -s --cover-erase --cover-html"
+":nnoremap <Leader>tf :NosetestFile <CR>
+":nnoremap <Leader>tc :NosetestClass <CR>
+":nnoremap <Leader>tt :NosetestMethod <CR>
+":nnoremap <Leader>tm :NosetestBaseMethod <CR>
 " TODO: make vim-option-toggler
-:nnoremap <Leader>tgv :ToggleNosetestsVerbose <CR>
-:nnoremap <Leader>tgs :ToggleNosetestsCaptureStdout <CR>
-:nnoremap <Leader>tgc :ToggleNosetestsCoverage <CR>
+":nnoremap <Leader>tgv :ToggleNosetestsVerbose <CR>
+":nnoremap <Leader>tgs :ToggleNosetestsCaptureStdout <CR>
+":nnoremap <Leader>tgc :ToggleNosetestsCoverage <CR>
 
 " override with pytest
-:nnoremap <Leader>tf :Pytest file <CR>
-:nnoremap <Leader>tc :Pytest class <CR>
-:nnoremap <Leader>tt :Pytest method <CR>
-:nnoremap <Leader>tm :Pytest function <CR>
+:nnoremap <Leader>tf :write<CR> :Pytest file <CR>
+:nnoremap <Leader>tc :write<CR> :Pytest class <CR>
+:nnoremap <Leader>tt :write<CR> :Pytest method <CR>
+:nnoremap <Leader>tm :write<CR> :Pytest function <CR>
 :nnoremap <Leader>ts :Pytest session <CR>
 
 

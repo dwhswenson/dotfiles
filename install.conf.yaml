@@ -14,5 +14,6 @@
     ~/.wgetrc: wgetrc
     ~/.zshrc: zshrc
     ~/.conda-env-defaults.txt: conda-env-defaults.txt
+    ~/.latexmkrc: latexmkrc
     #~/Library/texmf: texmf/ # on a Mac, at least
 
