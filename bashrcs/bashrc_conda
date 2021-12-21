@@ -1,26 +1,13 @@
-# this ensures that I'm using base conda executable even if I have conda
-# installed in the environment
 # currently I manually set MINICONDA_ROOT; I think I can do:
 #MINICONDA_ROOT=$(conda info --base)
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-MINICONDA_ROOT=/Users/dwhs/mambaforge
-__setup_cmd="${MINICONDA_ROOT}/bin/conda"
-__conda_setup="$($__setup_cmd 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
+source ~/.loginscripts/conda.sh
+if [ -z "$CONDA_EXE" ]; then
     if [ -f "${MINICONDA_ROOT}/etc/profile.d/conda.sh" ]; then
         . "${MINICONDA_ROOT}/etc/profile.d/conda.sh"
     else
         export PATH="${MINICONDA_ROOT}/bin:$PATH"
     fi
 fi
-unset __conda_setup
-unset __setup_cmd
-# <<< conda initialize <<<
-
-conda activate
 
 alias cca="source ~/.scripts/conda-create-activate.sh"

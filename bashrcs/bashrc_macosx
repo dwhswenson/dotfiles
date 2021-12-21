@@ -12,6 +12,7 @@ export SVN_SSH="ssh -q -i $HOME/.ssh/hyperblazer_keys/dwhs_svn"
 alias svndiff="svn diff --diff-cmd fmdiff"
 alias f77="gfortran"
 #alias sage="/Applications/Sage-6.9.app/Contents/Resources/sage/sage"
+export LOCAL_APPLICATIONS="/Applications"
 
 function pstat2png
 {
@@ -74,9 +75,8 @@ alias xssh="open -g -a XQuartz && ssh -X"
 ## use rbenv for ruby
 export PATH=~/.rbenv/bin:$PATH
 #eval "$(rbenv init -)"
-eval "$(rbenv init --no-rehash -)"
+#eval "$(rbenv init --no-rehash -)"
 #(rbenv rehash &) 2> /dev/null
-
 
 
 alias restart-pboard="launchctl stop com.apple.pboard && launchctl start com.apple.pboard"

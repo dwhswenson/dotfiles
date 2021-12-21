@@ -1,5 +1,33 @@
 # $HOME/.bashrcs/bashrc_dwhs
 
+### NON-LOGIN
+source ~/.loginscripts/fuck.sh
+
+### NON-INTERACTIVE
+
+export GITHUBUSER="dwhswenson"
+
+# GPG
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+  . "${HOME}/.gpg-agent-info"
+  export GPG_AGENT_INFO
+  export SSH_AUTH_SOCK
+  export SSH_AGENT_PID
+fi
+
+GPG_TTY=$(tty)
+export GPG_TTY
+
+# random places we hide programs
+export PATH=$PATH:~/.scripts:$HOME/bin
+
+export GNUPLOT_LIB=$GNUPLOT_LIB:~/.gnuplotd
+# officially set up for gdb, but might be useful elsewhere:
+export EDITOR=vim
+
+
+### INTERACTIVE
+
 # ls has different color behavior on different system; on most systems I
 # want to use the -G option. If it is different for a specific computer, I
 # set LS_COLOR_OPT in that computer's bashrc
@@ -17,7 +45,6 @@ alias ls="ls -F ${LS_COLOR_OPT}"
 alias sssh="ssh -o 'PubkeyAuthentication=no'"
 
 alias gittyup="git fetch upstream && git merge -S upstream/master && git push"
-export GITHUBUSER="dwhswenson"
 
 export XXDIR="$HOME/.envconfigs/${UNISONLOCALHOSTNAME}"
 source ~/.bashrcs/xx.sh
@@ -26,7 +53,6 @@ function xxrun {
     echo "conda activate $CONDA_DEFAULT_ENV" > .xxrun
 }
 
-eval "$(thefuck --alias)"
 
 # how I think a few commands SHOULD work by default
 alias rm="rm -i"
@@ -54,10 +80,6 @@ alias pytest="py.test"
 # (cloc should be aliased to ~/bin/
 alias cloc="cloc --no3 --exclude-dir=.svn --not-match-f=y.tab.. --not-match-f=lex.yy.c --exclude_dir docs"
 
-# I don't use Midnight Commander, but kept accidentally launching it when I
-# typed "mc" instead of "mv"
-alias mcmc="/usr/bin/mc" # we assume that's where it is kept
-alias mc="echo 'Midnight Commander has been moved to mcmc, after too many mv typos'"
 alias pyclewn='pyclewn -c "-c \"call Pyclewnmappings()\"" '
 
 alias remake="make clean && make"
@@ -73,17 +95,6 @@ alias yesterday="date -v -1d +%Y%m%d"
 # at some point, turn this into a function such that we can call:
 #  `today`   `today -1`  `today -1m` .... etc
 alias nextmon="date -v+1d -v+Mon +%Y%m%d" # weekly Monday meetings
-
-# GPG
-if [ -f "${HOME}/.gpg-agent-info" ]; then
-  . "${HOME}/.gpg-agent-info"
-  export GPG_AGENT_INFO
-  export SSH_AUTH_SOCK
-  export SSH_AGENT_PID
-fi
-
-GPG_TTY=$(tty)
-export GPG_TTY
 
 # everybody's got an mkcd function, right? There are probably better
 # implementations out there
@@ -128,16 +139,7 @@ function cdP {
 alias edit="vi"
 alias copy="cp"
 
-# random places we hide programs
-export PATH=$PATH:~/.scripts:$HOME/bin
-
-export GNUPLOT_LIB=$GNUPLOT_LIB:~/.gnuplotd
-# officially set up for gdb, but might be useful elsewhere:
-export EDITOR=vim
-
 if [ $SHELL = "bash" ]
 then
   source ~/.scripts/git-completion.bash
 fi
-
-#export PATH=~/miniconda3/bin:$PATH

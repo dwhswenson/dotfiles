@@ -1,28 +1,22 @@
 # ${HOME}/.bashrcs/bashrc_yvette
 # bashrc file for Yvette, my current laptop (a MacBook of some sort)
 
-export UNISONLOCALHOSTNAME="Yvette"
-
-MINICONDA_ROOT="${HOME}/miniconda3"
 source ${HOME}/.bashrcs/bashrc_conda
 source ${HOME}/.bashrcs/aliases/betterbib
-
 source ${HOME}/.bashrcs/bashrc_macosx
 
+# TODO: all .loginscripts should be sourced at once
+source ${HOME}/.loginscripts/ruby.sh
+
 source ~/.bashrcs/bashrc_dynamiq
-export LOCAL_APPLICATIONS="/Applications"
 
 export DYNAMIQ_BASEDIR=~/research/md
-alias unison="unison -ui text" # may be needed for all Mac OS X soon
 
 # need a way to switch betweem clang and gcc
 #export CC=/usr/local/opt/llvm/bin/clang
 #export CXX=/usr/local/opt/llvm/bin/clang++
 #export CPPFLAGS="-I/usr/local/opt/llvm/include/c++/v1"
 #export LDFLAGS="-L/usr/local/opt/llvm/lib"
-
-# MultiMarkdown
-#alias multimarkdown="$HOME/Library/Application\ Support/MultiMarkdown/bin/MultiMarkdown.pl"
 
 export GSL_CFLAGS=`gsl-config --cflags`
 export GSL_LDFLAGS=`gsl-config --libs`
@@ -35,14 +29,7 @@ the_archives="/Users/dwhs/Documents/The_Archives"
 alias shakespeare="more $the_archives/Gutenburg/Shakespeare/shaks12.txt"
 alias bible="more $the_archives/Gutenburg/Religion/Bible/bible11.txt"
 
-# aliases to programs
-# TODO: if these still exist, they should be replaced with symlinks
-alias mplayer="/Applications/MPlayer\ OS\ X\ 2.app/Contents/Resources/mplayer.app/Contents/MacOS/mplayer"
-alias octave="/Applications/Octave.app/Contents/Resources/bin/octave"
-
 export X3DNA="$HOME/x3dna-v2.3"
 export PATH=$PATH:"$X3DNA/bin"
 
 source ${HOME}/.bashrcs/bashrc_dwhs
-
-
