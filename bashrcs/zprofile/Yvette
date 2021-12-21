@@ -1,0 +1,6 @@
+# zprofile for Yvette
+
+source ${DOTFILES_DIR}/bashrcs/login/conda.zsh
+source ${DOTFILES_DIR}/bashrcs/bashrc_conda
+source ${DOTFILES_DIR}/bashrcs/login/thefuck
+source ${DOTFILES_DIR}/bashrcs/login/ruby

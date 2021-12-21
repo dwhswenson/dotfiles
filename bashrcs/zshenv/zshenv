@@ -1,4 +1,8 @@
-mkdir -p ~/.loginscripts/
+if [ -z $_LOGINSCRIPTS ]; then
+    export _LOGINSCRIPTS=${HOME}/.loginscripts
+fi
+
+mkdir -p ${_LOGINSCRIPTS}
 
 export PATH="/usr/local/bin:$PATH"
 

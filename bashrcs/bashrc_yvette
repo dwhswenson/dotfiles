@@ -18,8 +18,9 @@ export DYNAMIQ_BASEDIR=~/research/md
 #export CPPFLAGS="-I/usr/local/opt/llvm/include/c++/v1"
 #export LDFLAGS="-L/usr/local/opt/llvm/lib"
 
-export GSL_CFLAGS=`gsl-config --cflags`
-export GSL_LDFLAGS=`gsl-config --libs`
+# these should also depend on the environment -- and should come from CMake
+#export GSL_CFLAGS=`gsl-config --cflags`
+#export GSL_LDFLAGS=`gsl-config --libs`
 
 
 #export VMDCMD=/Applications/VMD\ 1.9.1.app/Contents/MacOS/startup.command

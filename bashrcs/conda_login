@@ -1,1 +1,0 @@
-conda 'shell.zsh' 'hook' > ~/.loginscripts/conda.sh

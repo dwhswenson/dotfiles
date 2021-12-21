@@ -1,5 +1,0 @@
-
-echo "Running zprofile_yvette"
-source ~/.bashrcs/conda_login
-source ~/.bashrcs/thefuck_login
-source ~/.bashrcs/ruby_login

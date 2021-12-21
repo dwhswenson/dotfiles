@@ -1,7 +1,7 @@
 # currently I manually set MINICONDA_ROOT; I think I can do:
 #MINICONDA_ROOT=$(conda info --base)
 
-source ~/.loginscripts/conda.sh
+source ${_LOGINSCRIPTS}/conda.sh
 if [ -z "$CONDA_EXE" ]; then
     if [ -f "${MINICONDA_ROOT}/etc/profile.d/conda.sh" ]; then
         . "${MINICONDA_ROOT}/etc/profile.d/conda.sh"
