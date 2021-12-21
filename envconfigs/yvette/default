@@ -1,4 +1,8 @@
 #!/bin/bash
 
-conda activate base
-conda activate --stack dev
+if [[ "$CONDA_DEFAULT_ENV" != "dev" ]]; then
+    if [[ "$CONDA_DEFAULT_ENV" != "base" ]]; then
+        conda activate base
+    fi
+    conda activate --stack dev
+fi

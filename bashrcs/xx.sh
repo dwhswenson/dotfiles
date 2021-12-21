@@ -18,9 +18,13 @@ fi
 
 function xx {
     if [ $# -eq 0 ]; then
-        local xxrun=$(xxfind)
-        if [ -f "$xxrun" ]; then
-            source $xxrun
+        local PWD=$(pwd)
+        if [[ "$PWD" != "$_LAST_XX_DIR" ]]; then
+            export _LAST_XX_DIR=$PWD
+            local xxrun=$(xxfind)
+            if [ -f "$xxrun" ]; then
+                source $xxrun
+            fi
         fi
     else
         source ${XXDIR}/$1
