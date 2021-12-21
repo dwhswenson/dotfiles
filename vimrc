@@ -151,7 +151,7 @@ endfunction
 :set nohls
 
 " I keep my textwidth at 76 (allows for quoting on an 80 column terminal). I
-" always use an 80 column terminal -- yes, even in python
+" always use an 80 column terminal
 :set textwidth=76
 
 " auto-indent for almost everything, although cindent is prettier for C
@@ -169,18 +169,29 @@ endfunction
 " settings.
 
 " Put the document name in the window title
-:set title
-
-" Stolen from
+" Useful links:
 " https://groups.google.com/forum/#!topic/iterm2-discuss/ZIlszlOHX5o
-set t_ts=]1;
-set t_fs=
+" https://gist.github.com/bignimbus/1da46a18416da4119778
+" TODO update gist above with my version (speed, etc)
 " Set the title of the Terminal to the currently open file
+set t_ts=]1;  " this sets the standard title to only tabs
+set t_fs=
+set title
 function! SetTerminalTitle()
     let titleString = expand('%:t')
     if len(titleString) > 0
-        let &titlestring = expand('%:t')
-        set title
+        let &titlestring = titleString
+        let trackLabel = $_TRACK_LABEL
+        if len(trackLabel) > 0
+            " override window title via escape sequences
+            let windowtitle = titleString . " " . trackLabel
+            let echo_args = "\033];" . windowtitle . "\007"
+            " use non-login shell for speed
+            let old_shell = &shell
+            let &shell = "/bin/bash"
+            execute 'silent !echo -e "' . echo_args . '"'
+            let &shell = old_shell
+        endif
     endif
 endfunction
 autocmd BufEnter * call SetTerminalTitle()
