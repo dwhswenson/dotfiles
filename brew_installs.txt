@@ -12,6 +12,9 @@ gdb
 ctags
 cscope
 
+# includes several useful linux utils
+util-linux
+
 # compiling dynamiq
 bison flex
 llvm  # use a more recent clang
