@@ -3,6 +3,7 @@
 
 source ${DOTFILES_DIR}/shell/rcs/conda
 source ${DOTFILES_DIR}/shell/aliases/betterbib
+source ${DOTFILES_DIR}/shell/aliases/nep29
 source ${DOTFILES_DIR}/shell/rcs/macos
 
 # TODO: all .loginscripts should be sourced at once
