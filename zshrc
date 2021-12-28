@@ -9,8 +9,6 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/dwhs/.oh-my-zsh
 
-# TODO: this brew --prefix call is slow
-#export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 bindkey -v
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -69,9 +67,9 @@ plugins=(git)
 #export PATH="/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 source $ZSH/oh-my-zsh.sh
-#
-# TODO: clean this up to separate bash and zsh stuff
-source ~/.bashrc
+
+# get computer-specific stuff
+source $DOTFILES_DIR/bashrcs/rcs/$UNISONLOCALHOSTNAME
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

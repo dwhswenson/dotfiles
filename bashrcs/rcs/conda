@@ -1,5 +1,7 @@
 # currently I manually set MINICONDA_ROOT; I think I can do:
 #MINICONDA_ROOT=$(conda info --base)
+# (this would have to be in the zprofile/generic, though -- and may need
+# reordering)
 
 source ${_LOGINSCRIPTS}/conda.sh
 if [ -z "$CONDA_EXE" ]; then

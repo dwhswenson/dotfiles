@@ -1,7 +1,7 @@
 # zshenv for Yvette
 
 export UNISONLOCALHOSTNAME="Yvette"
-export MINICONDA_ROOT="${HOME}/mambaforge/"
 export DOTFILES_DIR="${HOME}/dotfiles"
+export MINICONDA_ROOT="${HOME}/mambaforge"
 
-source ${HOME}/.bashrcs/zshenv/zshenv
+source ${DOTFILES_DIR}/bashrcs/zshenv/generic

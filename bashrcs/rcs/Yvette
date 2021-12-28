@@ -1,14 +1,14 @@
 # ${HOME}/.bashrcs/bashrc_yvette
 # bashrc file for Yvette, my current laptop (a MacBook of some sort)
 
-source ${HOME}/.bashrcs/bashrc_conda
+source ${HOME}/.bashrcs/rcs/conda
 source ${HOME}/.bashrcs/aliases/betterbib
-source ${HOME}/.bashrcs/bashrc_macosx
+source ${HOME}/.bashrcs/rcs/macos
 
 # TODO: all .loginscripts should be sourced at once
 source ${HOME}/.loginscripts/ruby.sh
 
-source ~/.bashrcs/bashrc_dynamiq
+source ~/.bashrcs/rcs/dynamiq
 
 export DYNAMIQ_BASEDIR=~/research/md
 
@@ -33,4 +33,4 @@ alias bible="more $the_archives/Gutenburg/Religion/Bible/bible11.txt"
 export X3DNA="$HOME/x3dna-v2.3"
 export PATH=$PATH:"$X3DNA/bin"
 
-source ${HOME}/.bashrcs/bashrc_dwhs
+source ${HOME}/.bashrcs/rcs/dwhs
