@@ -1,7 +1,7 @@
-# ${HOME}/.bashrcs/bashrc_macosx
-# bashrc file for all (current) Mac OS X machines
+# ${DOTFILES_DIR}/shell/rcs/macos
+# shell config file for all (current) Mac OS X machines
 
-source ~/.bashrcs/bashrc_dropbox # Macs should have Dropbox installed
+source $DOTFILES_DIR/shell/rcs/dropbox # Macs should have Dropbox installed
 
 alias callme='say "Hey sexy, come over here"'
 
@@ -11,7 +11,6 @@ export SVN_SSH="ssh -q -i $HOME/.ssh/hyperblazer_keys/dwhs_svn"
 
 alias svndiff="svn diff --diff-cmd fmdiff"
 alias f77="gfortran"
-#alias sage="/Applications/Sage-6.9.app/Contents/Resources/sage/sage"
 
 function pstat2png
 {
@@ -45,7 +44,7 @@ export MPICC=mpicc
 #alias aprun="mpirun"
 alias memcheck="valgrind --tool=memcheck --leak-check=full --dsymutil=yes --track-origins=yes"
 
-# VMDCMD needs to be set bashrc_HOSTNAME
+# VMDCMD needs to be set in computer-specific rc
 alias vmd="itermrun \'\${VMDCMD}\'"
 alias vvmd='command "${VMDCMD}"'
 alias xvmd='xtermrun "${VMDCMD}"'
@@ -56,8 +55,11 @@ alias xvmd='xtermrun "${VMDCMD}"'
 alias open.="open ."
 alias xcode="open -a XCode"
 #alias maillog="cat /var/log/mail.log"
+
+# TODO: revisit these -- do we still need XQuartz?
 alias x11="open -g -a XQuartz" # post Mountain Lion, need XQuartz, not X11
 alias xssh="open -g -a XQuartz && ssh -X" 
+
 # fucking MacPorts
 #MACPORTS_PATH=/opt/local/bin:/opt/local/sbin
 # fucking jupyter: who the hell install themselves here?
@@ -71,12 +73,9 @@ alias xssh="open -g -a XQuartz && ssh -X"
 
 # brew stuff
 #export PATH=/usr/local/opt/ruby/bin:$PATH  # again, putting this in front
-## use rbenv for ruby
-export PATH=~/.rbenv/bin:$PATH
 #eval "$(rbenv init -)"
-eval "$(rbenv init --no-rehash -)"
+#eval "$(rbenv init --no-rehash -)"
 #(rbenv rehash &) 2> /dev/null
-
 
 
 alias restart-pboard="launchctl stop com.apple.pboard && launchctl start com.apple.pboard"

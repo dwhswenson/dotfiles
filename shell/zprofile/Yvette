@@ -1,0 +1,18 @@
+# zprofile for Yvette
+
+lockfile=".zprofile.Yvette.lock"
+
+if (set -o noclobber; echo "lock" > $lockfile) 2> /dev/null; then
+    trap 'rm -f "$lockfile"' INT TERM EXIT
+
+    source ${DOTFILES_DIR}/shell/login/conda.zsh
+    source ${DOTFILES_DIR}/shell/rcs/conda
+    source ${DOTFILES_DIR}/shell/login/thefuck
+    source ${DOTFILES_DIR}/shell/login/ruby
+
+    rm -f $lockfile
+    unset lockfile
+    trap INT TERM EXIT
+else
+    sleep 1  # to wait out the setup
+fi

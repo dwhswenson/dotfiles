@@ -1,0 +1,36 @@
+# ${DOTFILES_DIR}/shell/rcs/Yvette
+# shell config file for Yvette, my current laptop (a MacBook of some sort)
+
+source ${DOTFILES_DIR}/shell/rcs/conda
+source ${DOTFILES_DIR}/shell/aliases/betterbib
+source ${DOTFILES_DIR}/shell/rcs/macos
+
+# TODO: all .loginscripts should be sourced at once
+source ${HOME}/.loginscripts/ruby.sh
+
+source ${DOTFILES_DIR}/shell/rcs/dynamiq
+
+export DYNAMIQ_BASEDIR=~/research/md
+
+# need a way to switch betweem clang and gcc
+#export CC=/usr/local/opt/llvm/bin/clang
+#export CXX=/usr/local/opt/llvm/bin/clang++
+#export CPPFLAGS="-I/usr/local/opt/llvm/include/c++/v1"
+#export LDFLAGS="-L/usr/local/opt/llvm/lib"
+
+# these should also depend on the environment -- and should come from CMake
+#export GSL_CFLAGS=`gsl-config --cflags`
+#export GSL_LDFLAGS=`gsl-config --libs`
+
+
+#export VMDCMD=/Applications/VMD\ 1.9.1.app/Contents/MacOS/startup.command
+export VMDCMD=/Applications/VMD\ 1.9.2.app/Contents/MacOS/startup.command
+
+the_archives="/Users/dwhs/Documents/The_Archives"
+alias shakespeare="more $the_archives/Gutenburg/Shakespeare/shaks12.txt"
+alias bible="more $the_archives/Gutenburg/Religion/Bible/bible11.txt"
+
+export X3DNA="$HOME/x3dna-v2.3"
+export PATH=$PATH:"$X3DNA/bin"
+
+source ${DOTFILES_DIR}/shell/rcs/dwhs

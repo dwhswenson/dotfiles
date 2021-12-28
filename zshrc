@@ -1,10 +1,14 @@
+# profiling based on https://kevin.burke.dev/kevin/profiling-zsh-startup-time/
+PROFILE_STARTUP=false
+if [[ $PROFILE_STARTUP == true ]]; then
+    PS4=$'%D{%M%S%.} %N:%i> '
+    exec 3>&2 2>$HOME/tmp/startlog.$$
+    setopt xtrace prompt_subst
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/dwhs/.oh-my-zsh
 
-alias cbio_mount="sshfs hal:/cbio ~/local_cbio -ovolname=cbio"
-alias cbio_unmount="umount /Users/dwhs/local_cbio"
-# TODO: this brew --prefix call is slow
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 bindkey -v
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -63,9 +67,9 @@ plugins=(git)
 #export PATH="/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 source $ZSH/oh-my-zsh.sh
-#
-# TODO: clean this up to separate bash and zsh stuff
-source ~/.bashrc
+
+# get computer-specific stuff
+source $DOTFILES_DIR/shell/rcs/$UNISONLOCALHOSTNAME
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -96,7 +100,7 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 bindkey -v
 bindkey "^?" backward-delete-char
 
-# added by travis gem
-[ -f /Users/dwhs/.travis/travis.sh ] && source /Users/dwhs/.travis/travis.sh
-
-eval $(thefuck --alias)
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    unsetopt xtrace
+    exec 2>&3 3>&-
+fi

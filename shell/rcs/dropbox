@@ -1,14 +1,11 @@
-# ${HOME}/.bashrcs/bashrc_dropbox
+# rcs/dropbox
 # Various shortcuts I use on machines that have Dropbox installed
 
 # current main dev directory (either to cd there or to run progs there)
 export DYNQ="${HOME}/Dropbox/dynamiq/trunk"
-export PYTHONPATH="${PYTHONPATH}:${DYNQ}/scripts" #:${HOME}/Dropbox/msm-tis"
+export PYTHONPATH="${PYTHONPATH}:${DYNQ}/scripts"
 alias dyndrop="${DYNQ}/dynamiq"
 alias ww="cd ${DYNQ}" 
 
 # NOTE: this will eventually change to something else
 export CURVESPLUS="${HOME}/Dropbox/DNA_baseroll/curves"
-
-alias words="echo -n 'AmateurSnob: ' && wc -w ~/Dropbox/Elements/amateursnob/*mdwn | tail -n 1 && echo -n 'PicoHacks' && wc -w  ~/Dropbox/Elements/picohacks/*mdwn | tail -n 1"
-

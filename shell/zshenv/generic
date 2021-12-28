@@ -1,0 +1,11 @@
+# generic zshenv; sets default values of various environment variables
+
+if [ -z $_LOGINSCRIPTS ]; then
+    export _LOGINSCRIPTS=${HOME}/.loginscripts
+fi
+
+mkdir -p ${_LOGINSCRIPTS}
+
+export PATH="/usr/local/bin:$PATH"
+
+# Users/dwhs/mambaforge/envs/dev/bin:/Users/dwhs/.rbenv/shims:/Users/dwhs/.rbenv/bin:/Users/dwhs/mambaforge/bin:/Users/dwhs/mambaforge/condabin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin:/opt/X11/bin:/Users/dwhs/x3dna-v2.3/bin:/Users/dwhs/.scripts:/Users/dwhs/bin

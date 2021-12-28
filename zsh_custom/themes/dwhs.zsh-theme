@@ -26,8 +26,13 @@ ZSH_THEME_GIT_PROMPT_DIRTY="✱"
 
 set_tab_title () {
     tab_title="$UNISONLOCALHOSTNAME: `pwd`"
+    if [ -n "$_TRACK_LABEL" ] ; then
+        TRACK_LABEL_STR=" ${_TRACK_LABEL}"
+    else
+        TRACK_LABEL_STR=""
+    fi
     echo -ne "\e]1;${tab_title}\a"
-    echo -ne "\e]2;${USER}@${UNISONLOCALHOSTNAME}\a"
+    echo -ne "\e]2;${USER}@${UNISONLOCALHOSTNAME}$TRACK_LABEL_STR\a"
 }
 
 
