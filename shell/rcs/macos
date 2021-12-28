@@ -1,7 +1,7 @@
-# ${HOME}/.bashrcs/bashrc_macosx
-# bashrc file for all (current) Mac OS X machines
+# ${DOTFILES_DIR}/shell/rcs/macos
+# shell config file for all (current) Mac OS X machines
 
-source $DOTFILES_DIR/bashrcs/rcs/dropbox # Macs should have Dropbox installed
+source $DOTFILES_DIR/shell/rcs/dropbox # Macs should have Dropbox installed
 
 alias callme='say "Hey sexy, come over here"'
 
@@ -44,7 +44,7 @@ export MPICC=mpicc
 #alias aprun="mpirun"
 alias memcheck="valgrind --tool=memcheck --leak-check=full --dsymutil=yes --track-origins=yes"
 
-# VMDCMD needs to be set bashrc_HOSTNAME
+# VMDCMD needs to be set in computer-specific rc
 alias vmd="itermrun \'\${VMDCMD}\'"
 alias vvmd='command "${VMDCMD}"'
 alias xvmd='xtermrun "${VMDCMD}"'

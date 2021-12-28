@@ -1,5 +1,4 @@
-# ~/.bashrcs/bashrc_gridengine
-# bashrc file for systems using Grid Engine as the queueing system
+# aliases/functions for systems using Grid Engine as the queueing system
 
 # Various functions/aliases I use for managing queues on systems with
 # GridEngine.

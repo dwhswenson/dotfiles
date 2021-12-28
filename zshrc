@@ -69,7 +69,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # get computer-specific stuff
-source $DOTFILES_DIR/bashrcs/rcs/$UNISONLOCALHOSTNAME
+source $DOTFILES_DIR/shell/rcs/$UNISONLOCALHOSTNAME
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8

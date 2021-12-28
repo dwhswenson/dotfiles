@@ -1,4 +1,4 @@
-# $HOME/.bashrcs/bashrc_dwhs
+# ${DOTFILES_DIR}/shell/rcs/dwhs
 
 ### NON-LOGIN
 source ~/.loginscripts/fuck.sh
@@ -30,7 +30,7 @@ export EDITOR=vim
 
 # ls has different color behavior on different system; on most systems I
 # want to use the -G option. If it is different for a specific computer, I
-# set LS_COLOR_OPT in that computer's bashrc
+# set LS_COLOR_OPT in the computer-specific rc file prior to importing this
 if [ -z "$LS_COLOR_OPT" ]
 then
   # what it normally is !!
@@ -44,11 +44,14 @@ alias ls="ls -F ${LS_COLOR_OPT}"
 # an extra s to ignore keys
 alias sssh="ssh -o 'PubkeyAuthentication=no'"
 
+# TODO: update gittyup to work with main as default branch
 alias gittyup="git fetch upstream && git merge -S upstream/master && git push"
 
 export XXDIR="$HOME/.envconfigs/${UNISONLOCALHOSTNAME}"
-source ~/.bashrcs/funcs/xx
+source $DOTFILES_DIR/shell/funcs/xx
 alias cd="xxcd"
+
+# TODO: is this really needed now? do I ever use it?
 function xxrun {
     echo "conda activate $CONDA_DEFAULT_ENV" > .xxrun
 }

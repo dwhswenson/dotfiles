@@ -1,5 +1,6 @@
-# bashrc_dynamiq
-#   bashrc stuff for any computer that runs dynamiq (technically, dynamiq2)
+# rcs/dynamiq
+#   aliases/functions for any computer that runs dynamiq (technically,
+#   dynamiq2)
 
 # NOTE: the environment variable ${DYNQ} should be set prior to loading
 # this. 
