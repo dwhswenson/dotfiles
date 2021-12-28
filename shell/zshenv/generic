@@ -1,3 +1,5 @@
+# generic zshenv; sets default values of various environment variables
+
 if [ -z $_LOGINSCRIPTS ]; then
     export _LOGINSCRIPTS=${HOME}/.loginscripts
 fi
