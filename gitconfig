@@ -15,3 +15,6 @@
 	gpgsign = true
 [pull]
     rebase = false
+
+[includeIf "gitdir:omsf/"]
+    path = ~/dotfiles/gitconfig_omsf
