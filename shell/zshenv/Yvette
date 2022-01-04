@@ -5,3 +5,4 @@ export DOTFILES_DIR="${HOME}/dotfiles"
 export MINICONDA_ROOT="${HOME}/mambaforge"
 
 source ${DOTFILES_DIR}/shell/zshenv/generic
+#echo "zshenv" gdate +%s.%N

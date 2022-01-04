@@ -1,13 +1,20 @@
 # ${DOTFILES_DIR}/shell/rcs/Yvette
 # shell config file for Yvette, my current laptop (a MacBook of some sort)
 
+#gdate +%s.%N && echo "conda"
 source ${DOTFILES_DIR}/shell/rcs/conda
+#gdate +%s.%N
 source ${DOTFILES_DIR}/shell/aliases/betterbib
 source ${DOTFILES_DIR}/shell/aliases/nep29
+source ${DOTFILES_DIR}/shell/aliases/black
+#source ${DOTFILES_DIR}/shell/aliases/glances  # seems to have problems now
+source ${DOTFILES_DIR}/shell/aliases/pygraphviz
 source ${DOTFILES_DIR}/shell/rcs/macos
 
+#gdate +%s.%N && echo "ruby"
 # TODO: all .loginscripts should be sourced at once
 source ${HOME}/.loginscripts/ruby.sh
+#gdate +%s.%N
 
 source ${DOTFILES_DIR}/shell/rcs/dynamiq
 

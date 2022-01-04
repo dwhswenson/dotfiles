@@ -1,6 +1,7 @@
 # ${DOTFILES_DIR}/shell/rcs/dwhs
 
 ### NON-LOGIN
+# this should probably loop over everything in loginscripts
 source ~/.loginscripts/fuck.sh
 
 ### NON-INTERACTIVE
@@ -47,6 +48,7 @@ alias sssh="ssh -o 'PubkeyAuthentication=no'"
 # TODO: update gittyup to work with main as default branch
 alias gittyup="git fetch upstream && git merge -S upstream/master && git push"
 
+#gdate +%s.%N && echo "xx"
 export XXDIR="$HOME/.envconfigs/${UNISONLOCALHOSTNAME}"
 source $DOTFILES_DIR/shell/funcs/xx
 alias cd="xxcd"
@@ -55,7 +57,7 @@ alias cd="xxcd"
 function xxrun {
     echo "conda activate $CONDA_DEFAULT_ENV" > .xxrun
 }
-
+#gdate +%s.%N  # timing for xx
 
 # how I think a few commands SHOULD work by default
 alias rm="rm -i"

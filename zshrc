@@ -66,7 +66,10 @@ plugins=(git)
 #export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/texbin:/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/local/lib/gromacs/bin:/usr/local/bin:/Users/dwhs/bin:/usr/local/scripts/:/Users/dwhs/.scripts:/Users/dwhs/bin"
 #export PATH="/opt/local/bin:/opt/local/sbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
+
+#gdate +%s.%N && echo "oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
+#gdate +%s.%N
 
 # get computer-specific stuff
 source $DOTFILES_DIR/shell/rcs/$UNISONLOCALHOSTNAME
@@ -104,3 +107,5 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     unsetopt xtrace
     exec 2>&3 3>&-
 fi
+
+#gdate +%s.%N && echo "end zshrc"
