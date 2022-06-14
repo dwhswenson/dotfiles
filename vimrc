@@ -40,7 +40,6 @@ Plug 'tmhedberg/SimpylFold' " Python syntax-level folding
 "Plug 'JarrodCTaylor/vim-python-test-runner' " nose tests
 "Plug 'dwhswenson/vim-python-test-runner' " nose tests (my fork)
 Plug 'alfredodeza/pytest.vim'  " pytest instead
-"Plug 'scrooloose/syntastic' " Syntax checking (made vim very slow)
 Plug 'vim-syntastic/syntastic'
 Plug 'gabrielelana/vim-markdown'  " better markdown support (incl. jekyll)
 
@@ -193,6 +192,7 @@ function! SetTerminalTitle()
             let &shell = old_shell
         endif
     endif
+    redraw!
 endfunction
 autocmd BufEnter * call SetTerminalTitle()
 
