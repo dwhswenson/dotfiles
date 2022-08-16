@@ -60,7 +60,7 @@ call plug#end()
 let g:syntastic_mode_map = { "mode": "passive", "active_filetypes": [], "passive_filetypes": [] }
 let g:syntastic_python_checkers = ['pylint', 'flake8']
 " TODO this looks like it'll be machine-specific; any way around that?
-let g:syntastic_shell = '/usr/local/bin/zsh'
+"let g:syntastic_shell = '/usr/local/bin/zsh'
 
 " this is how I actually use Syntastic in practice
 noremap <C-s> :write<CR>:SyntasticReset<CR>:SyntasticCheck<CR>
@@ -133,7 +133,7 @@ endfunction
 :set ruler
 
 " we want the shell to be a bash login (so it reads .bashrc)
-:set shell=/bin/bash\ -l
+":set shell=/
 
 " make file completion act the way it does in readline, only better
 :set wildmode=longest,list,full
