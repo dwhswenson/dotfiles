@@ -3,6 +3,8 @@
 This handles various configuration stuff for shells, specifically zsh and (when
 necessary) bash.
 
+See useful information here: https://blog.flowblok.id.au/2013-02/shell-startup-scripts.html
+
 
 ## Setting up a new computer
 
