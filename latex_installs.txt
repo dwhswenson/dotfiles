@@ -7,3 +7,4 @@ soul
 etoolbox
 revtex
 elsarticle
+adjustwidth

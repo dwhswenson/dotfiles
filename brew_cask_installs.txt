@@ -1,6 +1,8 @@
 google-chrome
+1password
+bartender
 dropbox
-quicksilver
+raycast
 iterm2
 omnifocus
 omnigraffle
@@ -9,6 +11,8 @@ flux
 papers
 omniplan
 sage
+vlc
+docker
 
 aquaterm
 mactex
@@ -16,3 +20,5 @@ qt-creator
 xquartz
 
 jupyter-notebook-viewer
+
+plex

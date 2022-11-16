@@ -1,7 +1,12 @@
 # core things that I use every day
 vim
 git
+svn
 zsh
+gh
+git-lfs
+
+direnv
 
 # compiling and debugging
 cmake
@@ -33,6 +38,7 @@ ffmpeg
 
 # latex?
 
+
 # compression utilities
 gzip p7zip
 
@@ -48,6 +54,8 @@ wget
 lynx
 
 gromacs
+
+node
 
 octave
 r

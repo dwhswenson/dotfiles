@@ -10,11 +10,11 @@ copy-pasting the following script:
 
         # install brew (http://brew.sh)
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        brew tap caskroom/cask
+        brew tap homebrew/cask
         brew tap homebrew/cask-fonts
-        ./strip_comments brew_cask_fonts.txt | xargs brew cask install
-        ./strip_comments brew_cask_installs.txt | xargs brew cask install
         ./strip_comments brew_installs.txt | xargs brew install
+        ./strip_comments brew_cask_fonts.txt | xargs brew install --cask
+        ./strip_comments brew_cask_installs.txt | xargs brew install --cask
 
         # clean up brew stuff
         ## octave installs gnuplot without aquaterm support
