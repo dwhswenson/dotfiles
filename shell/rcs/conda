@@ -12,4 +12,7 @@ if [ -z "$CONDA_EXE" ]; then
     fi
 fi
 
+conda activate
+
 alias cca="source ~/.scripts/conda-create-activate.sh"
+alias cca-x86="source ~/.scripts/conda-create-activate-x86"

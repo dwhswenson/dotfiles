@@ -48,6 +48,8 @@ alias sssh="ssh -o 'PubkeyAuthentication=no'"
 # TODO: update gittyup to work with main as default branch
 alias gittyup="git fetch upstream && git merge -S upstream/master && git push"
 
+alias bejekyll="bundle exec jekyll"
+
 #gdate +%s.%N && echo "xx"
 export XXDIR="$HOME/.envconfigs/${UNISONLOCALHOSTNAME}"
 source $DOTFILES_DIR/shell/funcs/xx
