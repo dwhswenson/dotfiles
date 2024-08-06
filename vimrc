@@ -31,17 +31,19 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'gmarik/Vundle.vim'
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'majutsushi/tagbar'
 
 "Plug 'Valloric/YouCompleteMe', { 'do': './install.py' } " auto-complete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
 Plug 'tmhedberg/SimpylFold' " Python syntax-level folding
 "Plug 'JarrodCTaylor/vim-python-test-runner' " nose tests
 "Plug 'dwhswenson/vim-python-test-runner' " nose tests (my fork)
 Plug 'alfredodeza/pytest.vim'  " pytest instead
 Plug 'vim-syntastic/syntastic'
 Plug 'gabrielelana/vim-markdown'  " better markdown support (incl. jekyll)
+Plug 'leafgarland/typescript-vim'
 
 "Plug 'gerw/vim-latex-suite' " latex (consider forking my own?)
 "Plug 'vim-scripts/a.vim'
@@ -89,15 +91,15 @@ let g:syntastic_aggregate_errors = 1
     "\ 'markdown' : 1, 'unite' : 1, 'text' : 1, 'vimwiki' : 1, 'pandoc' : 1,
     "\ 'infolog' : 1, 'mail' : 1, 'gitcommit' : 1, 'tex' : 1, 'rst' : 1}
 
-inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
 
 
 " for TDD with nosetests
@@ -118,8 +120,6 @@ endfunction
 :nnoremap <Leader>tm :write<CR> :Pytest function <CR>
 :nnoremap <Leader>ts :Pytest session <CR>
 
-
- 
 " can't live without syntax highlighting
 :syntax on
 :colo dwhs
@@ -232,6 +232,7 @@ autocmd BufEnter * call SetTerminalTitle()
 " Even if using folds, I typically want all folds open to start
 :autocmd BufRead * normal zR
 
+:autocmd BufEnter,BufNewFile *.tsx set cindent shiftwidth=2
 
 " to use Tagbar (which gives a window with an outline of the functions in a
 " given file)
