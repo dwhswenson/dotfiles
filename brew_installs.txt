@@ -20,6 +20,9 @@ cscope
 # includes several useful linux utils
 util-linux
 
+# needed for jekyll sites
+libffi
+
 # compiling dynamiq
 bison flex
 llvm  # use a more recent clang

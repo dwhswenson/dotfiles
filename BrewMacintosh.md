@@ -9,8 +9,7 @@ copy-pasting the following script:
         ./install
 
         # install brew (http://brew.sh)
-        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        brew tap homebrew/cask
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
         brew tap homebrew/cask-fonts
         ./strip_comments brew_installs.txt | xargs brew install
         ./strip_comments brew_cask_fonts.txt | xargs brew install --cask
@@ -27,18 +26,21 @@ copy-pasting the following script:
         mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc # RESPECT MY ZSHRC, OMZ!
         sudo chsh -s /usr/local/bin/zsh dwhs # or whatever my username is
 
+        # now should be coc?
         # set up Vundle plugings in vim
-        vim "+PluginInstall" "+q" "+q"
-        pushd ~/.vim/bundle/YouCompleteMe
-        ./install.py --clang-completer
-        popd
+        # vim "+PluginInstall" "+q" "+q"
+        # pushd ~/.vim/bundle/YouCompleteMe
+        # ./install.py --clang-completer
+        # popd
 
 
+        curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+        bash Miniforge3-$(uname)-$(uname -m).sh
         # install conda
-        OS_ARCH=MacOSX-x86_64
-        source miniconda_install.sh
-        conda config --add channels omnia
-        conda config --add channels conda-forge
+        # OS_ARCH=MacOSX-x86_64
+        # source miniconda_install.sh
+        # conda config --add channels omnia
+        # conda config --add channels conda-forge
         # TODO: add conda envs in here
 
         # install latex things
