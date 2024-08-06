@@ -12,10 +12,22 @@ DATE = "%a %d %b"
 TIME = "%H:%M"
 
 
+# TODO: make both messages available via a flag
+
+# this is the message I use when I think a review is unlikely, or when I
+# may need feedback from multiple people (bigger changes)
 MSG = (
     "This is ready for review and comment. "
     "I will leave it open for at least {hours} hours, "
     "merging no earlier than {datestring}."
+)
+
+# this is the message when I just want to give a reasonable amount of time
+# for a review to occur (smaller changes)
+MSG = (
+    "This is ready for review and comment. "
+    "Without review, I will merge this after at least {hours} hours, "
+    "no sooner than {datestring}."
 )
 
 def main(hours):
