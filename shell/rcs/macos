@@ -18,6 +18,10 @@ function pstat2png
     gprof2dot -f pstats $1 | dot -Tpng -o ${name}.png && open ${name}.png
 }
 
+function iterm2_print_user_vars() {
+    iterm2_set_user_var pixi_prompt "$PIXI_PROMPT"
+}
+
 export FC=gfortran
 
 # this was due to problem building Python extensions

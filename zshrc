@@ -9,6 +9,8 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/dwhs/.oh-my-zsh
 
+export PATH=~/.npm-global/bin:$PATH
+
 bindkey -v
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -59,7 +61,7 @@ ZSH_CUSTOM=~/dotfiles/zsh_custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git direnv)
 
 # User configuration
 
@@ -109,3 +111,6 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
 fi
 
 #gdate +%s.%N && echo "end zshrc"
+
+# Added by Windsurf
+export PATH="/Users/dwhs/.codeium/windsurf/bin:$PATH"

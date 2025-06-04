@@ -44,6 +44,8 @@ Plug 'alfredodeza/pytest.vim'  " pytest instead
 Plug 'vim-syntastic/syntastic'
 Plug 'gabrielelana/vim-markdown'  " better markdown support (incl. jekyll)
 Plug 'leafgarland/typescript-vim'
+Plug 'github/copilot.vim'
+Plug 'hashivim/vim-terraform'
 
 "Plug 'gerw/vim-latex-suite' " latex (consider forking my own?)
 "Plug 'vim-scripts/a.vim'

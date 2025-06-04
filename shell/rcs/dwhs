@@ -51,14 +51,14 @@ alias gittyup="git fetch upstream && git merge -S upstream/master && git push"
 alias bejekyll="bundle exec jekyll"
 
 #gdate +%s.%N && echo "xx"
-export XXDIR="$HOME/.envconfigs/${UNISONLOCALHOSTNAME}"
-source $DOTFILES_DIR/shell/funcs/xx
-alias cd="xxcd"
+#export XXDIR="$HOME/.envconfigs/${UNISONLOCALHOSTNAME}"
+#source $DOTFILES_DIR/shell/funcs/xx
+#alias cd="xxcd"
 
 # TODO: is this really needed now? do I ever use it?
-function xxrun {
-    echo "conda activate $CONDA_DEFAULT_ENV" > .xxrun
-}
+#function xxrun {
+    #echo "conda activate $CONDA_DEFAULT_ENV" > .xxrun
+#}
 #gdate +%s.%N  # timing for xx
 
 # how I think a few commands SHOULD work by default

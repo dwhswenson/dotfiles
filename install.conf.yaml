@@ -16,5 +16,6 @@
     ~/.zprofile: zprofile
     ~/.conda-env-defaults.txt: conda-env-defaults.txt
     ~/.latexmkrc: latexmkrc
+    #~/.pixi: pixi  # TODO: get the right things
     #~/Library/texmf: texmf/ # on a Mac, at least
 

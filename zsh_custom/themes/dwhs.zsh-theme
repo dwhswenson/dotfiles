@@ -46,7 +46,7 @@ add-zsh-hook precmd theme_precmd
 if [ $UID -eq 0 ]; then NCOLOR="green"; else NCOLOR="white"; fi
 
 # prompt
-PROMPT='%{$fg[$NCOLOR]%}${UNISONLOCALHOSTNAME}:%{$fg[white]%}%30<...<%~%<<%{$reset_color%} %n%(!.#.$) '
+PROMPT='%{$fg[$NCOLOR]%}${PIXI_PROMPT}${UNISONLOCALHOSTNAME}:%{$fg[white]%}%30<...<%~%<<%{$reset_color%} %n%(!.#.$) '
 #RPROMPT='$(git_prompt_info)'
 RPROMPT='${vcs_info_msg_0_}$(parse_git_dirty)'
 
