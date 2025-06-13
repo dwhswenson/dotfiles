@@ -2,7 +2,7 @@
 
 ### NON-LOGIN
 # this should probably loop over everything in loginscripts
-source ~/.loginscripts/fuck.sh
+#source ~/.loginscripts/fuck.sh
 
 ### NON-INTERACTIVE
 

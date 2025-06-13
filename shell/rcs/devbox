@@ -1,0 +1,2 @@
+#source ${DOTFILES_DIR}/shell/rcs/conda
+source ${DOTFILES_DIR}/shell/rcs/dwhs

@@ -1,0 +1,5 @@
+[user]
+    email = david.swenson@omsf.io
+
+[commit]
+    gpgsign = false

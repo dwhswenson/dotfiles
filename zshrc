@@ -7,7 +7,7 @@ if [[ $PROFILE_STARTUP == true ]]; then
 fi
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/dwhs/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 export PATH=~/.npm-global/bin:$PATH
 
@@ -113,4 +113,6 @@ fi
 #gdate +%s.%N && echo "end zshrc"
 
 # Added by Windsurf
-export PATH="/Users/dwhs/.codeium/windsurf/bin:$PATH"
+export PATH="$HOME/.codeium/windsurf/bin:$PATH"
+
+. "$HOME/.local/bin/env"

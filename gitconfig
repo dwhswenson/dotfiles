@@ -42,6 +42,9 @@
 [includeIf "gitdir:omsf/"]
     path = ~/dotfiles/gitconfig_omsf
 
+[includeIf "gitdir:/home/ubuntu/"]
+    path = ~/dotfiles/gitconfig_devbox
+
 [filter "lfs"]
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
