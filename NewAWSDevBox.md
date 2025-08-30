@@ -7,7 +7,13 @@
 
 2. apt-install a few things:
 
+   Ubuntu
+
         sudo apt install zsh direnv nodejs
+
+   Amazon Linux
+  
+        sudo yum install git 
 
 2. Install oh-my-zsh:
 
