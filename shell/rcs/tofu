@@ -1,0 +1,2 @@
+alias tfp="tofu plan -out plan.tfplan"
+alias tfa="tofu apply plan.tfplan"
