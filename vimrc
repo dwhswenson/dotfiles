@@ -266,7 +266,7 @@ endif
 :endfunction
 
 :noremap <leader>l :call LongLinesFileConfig()<CR>
-
+:autocmd FileType text,markdown,tex setlocal formatprg=~/.scripts/sentence_per_line.py
 
 " this is some cool stuff for when we use pyclewn for debugging
 :function Pyclewnmappings()
