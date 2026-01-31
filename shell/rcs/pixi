@@ -1,0 +1,10 @@
+export PATH=~/.pixi/bin/:$PATH
+
+function pa {
+  if [ "x$@" = "x" ]; then
+    env="-edefault"
+  else
+    env="-e$@"
+  fi
+  eval $(pixi shell-hook $env)
+}
