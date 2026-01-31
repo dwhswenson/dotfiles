@@ -30,7 +30,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'gmarik/Vundle.vim'
+"Plug 'gmarik/Vundle.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'majutsushi/tagbar'
 
@@ -292,3 +292,6 @@ endif
 :ha
 :colo dwhs
 :endfunction
+
+" This seems to be needed now due to some change in iTerm2 or vim
+:hi Normal ctermbg=NONE guibg=NONE

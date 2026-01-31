@@ -1,7 +1,7 @@
 - clean: ['~']
 
 - link:
-    ~/.bashrcs: bashrcs/
+    #~/.bashrcs: bashrcs/
     ~/.ctags: ctags
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
