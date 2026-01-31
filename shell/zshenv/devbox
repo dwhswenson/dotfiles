@@ -3,3 +3,4 @@ export DOTFILES_DIR="${HOME}/dotfiles"
 export MINICONDA_ROOT="${HOME}/miniforge3"
 
 source ${DOTFILES_DIR}/shell/zshenv/generic
+source ${DOTFILES_DIR}/shell/rcs/devbox
